@@ -123,6 +123,66 @@
             background: linear-gradient(90deg, transparent, #00d9ff, transparent);
             margin: 2rem 0;
         }
+
+        .tag-pill {
+            display: inline-block;
+            background-color: #334155;
+            color: #00d9ff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin: 4px 4px 4px 0;
+            border: 1px solid #00d9ff;
+            transition: all 0.3s ease;
+        }
+
+        .tag-pill:hover {
+            background-color: #00d9ff;
+            color: #0f172a;
+            transform: scale(1.05);
+        }
+
+        .achievement-card {
+            background-color: #1e293b;
+            border-left: 4px solid #00d9ff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card:hover {
+            background-color: #334155;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #1e293b;
+            border-left: 3px solid #00d9ff;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-item:hover {
+            background-color: #334155;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+        }
+
+        .icon-text {
+            font-size: 1.5rem;
+            min-width: 2rem;
+        }
     </style>
 </head>
 <body class="smooth-scroll">
@@ -133,6 +193,8 @@
             <div class="hidden md:flex gap-8">
                 <a href="#about" class="text-slate-300 hover:electric-blue transition-colors">About</a>
                 <a href="#skills" class="text-slate-300 hover:electric-blue transition-colors">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:electric-blue transition-colors">Projects</a>
+                <a href="#achievements" class="text-slate-300 hover:electric-blue transition-colors">Achievements</a>
                 <a href="#experience" class="text-slate-300 hover:electric-blue transition-colors">Education</a>
                 <a href="#connect" class="text-slate-300 hover:electric-blue transition-colors">Connect</a>
             </div>
@@ -150,7 +212,10 @@
             <h1 class="text-5xl md:text-7xl font-black mb-4 text-white glow-text">
                 Praveen Ragavendra B
             </h1>
-            <p class="text-xl md:text-3xl font-light text-slate-300 mb-8">
+            <p class="text-lg md:text-xl font-semibold electric-blue mb-4">
+                Electrical and Electronics Engineer
+            </p>
+            <p class="text-xl md:text-2xl font-light text-slate-300 mb-8">
                 Blending <span class="electric-blue font-bold">EEE Innovation</span> with <span class="electric-blue font-bold">AI Intelligence</span>
             </p>
             <div class="flex gap-4 justify-center flex-wrap mb-12">
@@ -159,7 +224,7 @@
             </div>
             <div class="text-slate-400 text-sm">
                 <p>Electrical & Electronics Engineering Student | Mepco Schlenk Engineering College</p>
-                <p class="text-xs mt-2">Batch 2023-2027</p>
+                <p class="text-xs mt-2">Batch 2023-2027 | GPA: 8.06/10</p>
             </div>
         </div>
     </section>
@@ -201,12 +266,16 @@
                         <h4 class="text-xl font-bold electric-blue mb-2">🤝 Community</h4>
                         <p class="text-slate-300">NSS Volunteer & Social Contributor</p>
                     </div>
+                    <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                        <h4 class="text-xl font-bold electric-blue mb-2">🔧 Specialization</h4>
+                        <p class="text-slate-300">IoT, Embedded Systems & Smart Automation</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Technical Skills Section -->
     <section id="skills" class="py-20 px-4 bg-slate-800">
         <div class="max-w-6xl mx-auto">
             <h2 class="section-title">
@@ -214,71 +283,547 @@
             </h2>
             <div class="line-separator"></div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Core EEE Skills -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                        <span>⚡</span> Core EEE
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">Circuit Analysis & Design</h4>
-                            <p class="text-slate-400 text-sm">Proficiency in analyzing and designing electrical circuits</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Circuits</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Simulation</span>
-                            </div>
+            <!-- Programming Skills -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
+                    <span>💻</span> Programming Languages
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">C & C++</h4>
+                        <p class="text-slate-400 text-sm mb-3">Core programming fundamentals and system-level programming</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Data Structures</span>
+                            <span class="tag-pill">Algorithms</span>
                         </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">Power Systems</h4>
-                            <p class="text-slate-400 text-sm">Understanding power generation, transmission, and distribution</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Power Systems</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Analysis</span>
-                            </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Python</h4>
+                        <p class="text-slate-400 text-sm mb-3">Strong Python skills for AI/ML and automation</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">ML</span>
+                            <span class="tag-pill">Automation</span>
                         </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">Electrical Machines</h4>
-                            <p class="text-slate-400 text-sm">Knowledge of motors, generators, and transformers</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Machines</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Drives</span>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">SQL</h4>
+                        <p class="text-slate-400 text-sm mb-3">Database design and query optimization</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Databases</span>
+                            <span class="tag-pill">Backend</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core EEE Skills -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
+                    <span>⚡</span> Core EEE & IoT
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Circuit Analysis & Design</h4>
+                        <p class="text-slate-400 text-sm mb-3">Analyzing and designing electrical circuits</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Circuits</span>
+                            <span class="tag-pill">Simulation</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Power Systems</h4>
+                        <p class="text-slate-400 text-sm mb-3">Generation, transmission, and distribution</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Systems</span>
+                            <span class="tag-pill">Analysis</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Electrical Machines</h4>
+                        <p class="text-slate-400 text-sm mb-3">Motors, generators, and transformers</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Machines</span>
+                            <span class="tag-pill">Drives</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">ESP32 & Microcontrollers</h4>
+                        <p class="text-slate-400 text-sm mb-3">IoT embedded systems development</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">ESP32</span>
+                            <span class="tag-pill">Embedded</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">MQTT & IoT Protocols</h4>
+                        <p class="text-slate-400 text-sm mb-3">Hardware-software integration and communication</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">MQTT</span>
+                            <span class="tag-pill">IoT</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">PCB Design</h4>
+                        <p class="text-slate-400 text-sm mb-3">Circuit board design and layout</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">PCB</span>
+                            <span class="tag-pill">FPGA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI & ML Skills -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
+                    <span>🤖</span> AI & Machine Learning
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">AI Agents</h4>
+                        <p class="text-slate-400 text-sm mb-3">Building intelligent agents for autonomous decision-making</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">AI Agents</span>
+                            <span class="tag-pill">LLM</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Machine Learning</h4>
+                        <p class="text-slate-400 text-sm mb-3">ML fundamentals and LSTM models</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">ML</span>
+                            <span class="tag-pill">LSTM</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Data Science</h4>
+                        <p class="text-slate-400 text-sm mb-3">Data analysis and forecasting</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Analysis</span>
+                            <span class="tag-pill">Forecasting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Platforms -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
+                    <span>🛠️</span> Tools & Platforms
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Version Control</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Git</span>
+                            <span class="tag-pill">GitHub</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">IDEs & Editors</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">VS Code</span>
+                            <span class="tag-pill">Arduino IDE</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Design Tools</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">MATLAB</span>
+                            <span class="tag-pill">Simulation</span>
+                        </div>
+                    </div>
+                    <div class="skill-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-3 text-white">Hardware</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag-pill">Arduino</span>
+                            <span class="tag-pill">FPGA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section id="soft-skills" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">
+                Soft <span class="electric-blue">Skills</span>
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">🎯</span> Problem Solving
+                        </h4>
+                        <p class="text-slate-300">Analytical approach to complex technical challenges</p>
+                    </div>
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">🧠</span> Analytical Thinking
+                        </h4>
+                        <p class="text-slate-300">Data-driven decision making and system analysis</p>
+                    </div>
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">🔗</span> Systems Thinking
+                        </h4>
+                        <p class="text-slate-300">Understanding complex interconnected systems</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">💬</span> Communication
+                        </h4>
+                        <p class="text-slate-300">Effective technical and non-technical communication</p>
+                    </div>
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">👥</span> Team Collaboration
+                        </h4>
+                        <p class="text-slate-300">Working effectively in cross-functional teams</p>
+                    </div>
+                    <div class="achievement-card p-6 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
+                            <span class="text-2xl">📚</span> Continuous Learning
+                        </h4>
+                        <p class="text-slate-300">Self-motivated and eager to acquire new skills</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 bg-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">
+                Featured <span class="electric-blue">Projects</span>
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="space-y-8">
+                <!-- Project 1 -->
+                <div class="bg-slate-900 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl">⚡🔋</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-2">
+                                Smart Grid Demand Forecasting & Dynamic Load Balancing
+                            </h3>
+                            <p class="text-slate-400 mb-3">
+                                <span class="font-semibold">Duration:</span> July 2025 - December 2025 (Ongoing)
+                            </p>
+                            <p class="text-slate-300 leading-relaxed mb-4">
+                                Designing a data pipeline for energy demand forecasting using machine learning. Exploring LSTM approach for load prediction and defining workflow for dynamic load balancing logic. Combining EEE principles with AI to optimize smart grid operations.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">LSTM</span>
+                                <span class="tag-pill">Data Pipeline</span>
+                                <span class="tag-pill">Energy Systems</span>
+                                <span class="tag-pill">Machine Learning</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- AI & Tech Skills -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                        <span>🤖</span> AI & Tech
-                    </h3>
-                    <div class="space-y-4">
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">Python Programming</h4>
-                            <p class="text-slate-400 text-sm">Strong Python skills for AI/ML development and automation</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Python</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">ML</span>
-                            </div>
-                        </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">AI Agents</h4>
-                            <p class="text-slate-400 text-sm">Building intelligent agents for autonomous decision-making</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">AI Agents</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">LLM</span>
-                            </div>
-                        </div>
-                        <div class="skill-card p-6 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2 text-white">GitHub & Version Control</h4>
-                            <p class="text-slate-400 text-sm">Proficient in Git workflows and collaborative development</p>
-                            <div class="mt-3 flex gap-2 flex-wrap">
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">Git</span>
-                                <span class="text-xs bg-slate-700 text-blue-300 px-3 py-1 rounded-full">GitHub</span>
+                <!-- Project 2 -->
+                <div class="bg-slate-900 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl">🏥📱</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-2">
+                                AI-Integrated RFID-Based Smart Health Monitoring System
+                            </h3>
+                            <p class="text-slate-400 mb-3">
+                                <span class="font-semibold">Status:</span> January 2025 - May 2025 (Completed)
+                            </p>
+                            <p class="text-slate-300 leading-relaxed mb-4">
+                                Built RFID-based patient registration system with backend workflow. Implemented real-time ESP32 → backend communication using HTTP/MQTT protocols. Designed database retrieval logic for patient history. Hackathon submission demonstrating hardware-software integration excellence.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">RFID</span>
+                                <span class="tag-pill">ESP32</span>
+                                <span class="tag-pill">MQTT</span>
+                                <span class="tag-pill">Backend</span>
+                                <span class="tag-pill">IoT</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Hackathons Section -->
+    <section id="achievements" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">
+                Achievements & <span class="electric-blue">Hackathons</span>
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="space-y-6">
+                <!-- Achievement 1 -->
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🥇</span>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">
+                                Hack the Horizon 2024 - 7th Place
+                            </h4>
+                            <p class="text-slate-400 mb-2">
+                                <span class="font-semibold">IEEE & KPR College Coimbatore</span> • 24-Hour Hackathon
+                            </p>
+                            <p class="text-slate-300 mb-3">
+                                AI-Based Remote Health Monitoring System
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">AI Agents</span>
+                                <span class="tag-pill">Health Monitoring</span>
+                                <span class="tag-pill">RFID</span>
+                                <span class="tag-pill">ESP32</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🏆</span>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">
+                                Smart India Hackathon 2025
+                            </h4>
+                            <p class="text-slate-400 mb-2">
+                                Intelligent Pesticide Sprinkling System
+                            </p>
+                            <p class="text-slate-300 mb-3">
+                                Developed intelligent automation system combining IoT sensors with AI decision-making for optimized agricultural operations.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">IoT</span>
+                                <span class="tag-pill">AI</span>
+                                <span class="tag-pill">Agriculture</span>
+                                <span class="tag-pill">Automation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">⭐</span>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">
+                                Smart India Hackathon 2024 - Top 30
+                            </h4>
+                            <p class="text-slate-400 mb-2">
+                                <span class="font-semibold">Shortlisted from 250 Teams</span>
+                            </p>
+                            <p class="text-slate-300 mb-3">
+                                Non-Electrical Solar Tracking System - Innovative renewable energy solution combining electrical engineering with smart tracking algorithms.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">Solar Energy</span>
+                                <span class="tag-pill">Tracking</span>
+                                <span class="tag-pill">Renewable</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🎨</span>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">
+                                First Prize - Poster Making Competition
+                            </h4>
+                            <p class="text-slate-400 mb-2">
+                                Fiesta Juniors'24 • Mepco Schlenk Engineering College
+                            </p>
+                            <p class="text-slate-300">
+                                Recognition for creative technical visualization and presentation skills
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership -->
+                <div class="achievement-card p-6 rounded-lg">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">👔</span>
+                        <div class="flex-1">
+                            <h4 class="text-xl font-bold text-white mb-2">
+                                Leadership Roles
+                            </h4>
+                            <div class="space-y-2">
+                                <p class="text-slate-300">
+                                    <span class="font-semibold">Chief Editor & Designer</span> - Campus Trails Magazine<br/>
+                                    <span class="text-slate-400 text-sm">Designed templates, curated student photography, led editorial meetings</span>
+                                </p>
+                                <p class="text-slate-300">
+                                    <span class="font-semibold">Office-Bearer</span> - Photography Club<br/>
+                                    <span class="text-slate-400 text-sm">Organized intra-college events including Fiesta and Legacy</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 px-4 bg-slate-800">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title">
+                <span class="electric-blue">Certifications</span> & Courses
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">🤖</span> 5-Day AI Agents Intensive Course
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">Google</p>
+                    <p class="text-slate-300">Advanced training in building and deploying intelligent AI agents</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">🐍</span> Joy of Computing using Python
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">Professional Certification</p>
+                    <p class="text-slate-300">Comprehensive Python programming and computational thinking</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">🔌</span> SoC Design Implementation in FPGA Board
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">Advanced Hardware Design</p>
+                    <p class="text-slate-300">System-on-Chip design and FPGA implementation expertise</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">📋</span> Fundamentals of PCB Design
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">PCB Design & Technology</p>
+                    <p class="text-slate-300">Circuit board design, layout, and manufacturing principles</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">📊</span> MATLAB for Engineering Applications
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">Technical Computing</p>
+                    <p class="text-slate-300">Simulation, modeling, and data analysis using MATLAB</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
+                        <span class="text-2xl">🏭</span> Industrial Visits & Exposure
+                    </h4>
+                    <p class="text-electric-blue font-semibold mb-2">Real-World Experience</p>
+                    <p class="text-slate-300">KEL, Traco Cable, IREL - Understanding industry practices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industrial Visits Section -->
+    <section id="industrial-visits" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">
+                Industrial <span class="electric-blue">Visits</span>
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="space-y-6">
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="text-2xl">🏢</span> Kerala Electrical & Allied Engineering Co. Ltd. (KEL)
+                    </h4>
+                    <p class="text-slate-300">Exposure to electrical equipment manufacturing and quality standards in industrial settings</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="text-2xl">🔌</span> Traco Cable Company Ltd.
+                    </h4>
+                    <p class="text-slate-300">Understanding cable manufacturing processes, specifications, and industrial-scale operations in Kerala</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="text-2xl">⚛️</span> Indian Rare Earths (IREL) Ltd.
+                    </h4>
+                    <p class="text-slate-300">Learning about rare earth mineral processing and applications in advanced technologies at Aluva, Kochi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Area of Interest Section -->
+    <section id="area-of-interest" class="py-20 px-4 bg-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">
+                Area of <span class="electric-blue">Interest</span>
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">🖥️</span> Backend & Systems Engineering
+                    </h4>
+                    <p class="text-slate-300">Designing robust systems and infrastructure for scalable applications</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">📡</span> IoT Software Systems
+                    </h4>
+                    <p class="text-slate-300">Creating intelligent IoT solutions connecting hardware and cloud systems</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">🤖</span> Intelligent Automation
+                    </h4>
+                    <p class="text-slate-300">Building smart systems that optimize processes using AI and machine learning</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">📊</span> Applied ML for Infrastructure
+                    </h4>
+                    <p class="text-slate-300">Leveraging machine learning for smart grid and energy optimization</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">⚡</span> Smart Energy & Data Systems
+                    </h4>
+                    <p class="text-slate-300">Combining power systems with data-driven solutions for sustainability</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+                        <span class="text-2xl">🌱</span> Sustainable Technology
+                    </h4>
+                    <p class="text-slate-300">Developing innovative solutions for renewable energy and environmental challenges</p>
                 </div>
             </div>
         </div>
@@ -302,13 +847,37 @@
                                 Bachelor of Engineering in Electrical & Electronics Engineering
                             </h3>
                             <p class="text-xl electric-blue font-semibold mb-2">
-                                Mepco Schlenk Engineering College
+                                Mepco Schlenk Engineering College, Sivakasi
                             </p>
-                            <p class="text-slate-400 mb-4">
+                            <p class="text-slate-400 mb-2">
                                 <span class="font-semibold">Batch:</span> 2023-2027 | <span class="font-semibold">Status:</span> Currently Pursuing
                             </p>
+                            <p class="text-slate-400 mb-4">
+                                <span class="font-semibold">GPA:</span> 8.06/10
+                            </p>
                             <p class="text-slate-300 leading-relaxed">
-                                Pursuing comprehensive education in Electrical and Electronics Engineering with specialization in modern technological innovations. Actively engaged in academic excellence while exploring interdisciplinary applications of AI and machine learning.
+                                Pursuing comprehensive education in Electrical and Electronics Engineering with specialization in modern technological innovations. Actively engaged in academic excellence while exploring interdisciplinary applications of AI, IoT, and embedded systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Education -->
+                <div class="bg-slate-800 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="text-4xl">📚</div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold text-white mb-2">
+                                Higher Secondary
+                            </h3>
+                            <p class="text-xl electric-blue font-semibold mb-2">
+                                Vivekanda Vidhyalaya Matric School, Kodaikanal
+                            </p>
+                            <p class="text-slate-400 mb-4">
+                                <span class="font-semibold">Year:</span> 2022-2023
+                            </p>
+                            <p class="text-slate-300 leading-relaxed">
+                                Strong foundation in Physics, Chemistry, and Mathematics with a focus on science and technology fundamentals.
                             </p>
                         </div>
                     </div>
@@ -326,7 +895,7 @@
                                 Mepco Schlenk Engineering College
                             </p>
                             <p class="text-slate-400 mb-4">
-                                Active Member | Ongoing
+                                <span class="font-semibold">Status:</span> Active Member | Ongoing
                             </p>
                             <p class="text-slate-300 leading-relaxed">
                                 Contributing to community service and social welfare initiatives through the National Service Scheme. Committed to making a positive impact on society while developing leadership and organizational skills.
@@ -347,10 +916,10 @@
                                 Self-Driven Exploration
                             </p>
                             <p class="text-slate-400 mb-4">
-                                Ongoing | Passion-Based
+                                <span class="font-semibold">Duration:</span> Ongoing | Passion-Based
                             </p>
                             <p class="text-slate-300 leading-relaxed">
-                                Beyond curriculum, actively learning AI agents, machine learning frameworks, and modern software development practices. Building projects that combine EEE principles with AI applications.
+                                Beyond curriculum, actively learning AI agents, machine learning frameworks, and modern software development practices. Building projects that combine EEE principles with AI applications while expanding expertise in IoT and embedded systems.
                             </p>
                         </div>
                     </div>
@@ -359,55 +928,108 @@
         </div>
     </section>
 
+    <!-- Languages Section -->
+    <section id="languages" class="py-20 px-4 bg-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">
+                <span class="electric-blue">Languages</span> Known
+            </h2>
+            <div class="line-separator"></div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="text-2xl">🌍</span> English
+                    </h4>
+                    <p class="text-slate-300 font-semibold">Professional Level</p>
+                    <p class="text-slate-400 text-sm">Business communication, technical documentation, and presentation</p>
+                </div>
+
+                <div class="achievement-card p-6 rounded-lg">
+                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
+                        <span class="text-2xl">🇮🇳</span> Tamil
+                    </h4>
+                    <p class="text-slate-300 font-semibold">Native</p>
+                    <p class="text-slate-400 text-sm">Fluent in reading, writing, and speaking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Connect Section -->
-    <section id="connect" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-4xl mx-auto text-center">
+    <section id="connect" class="py-20 px-4 bg-slate-900">
+        <div class="max-w-4xl mx-auto">
             <h2 class="section-title">
                 Let's <span class="electric-blue">Connect</span>
             </h2>
             <div class="line-separator"></div>
             
-            <p class="text-xl text-slate-300 mb-12 max-w-2xl mx-auto">
+            <!-- Contact Information -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-white mb-6">Direct Contact</h3>
+                <div class="space-y-4">
+                    <div class="contact-info-item">
+                        <span class="icon-text">📱</span>
+                        <div>
+                            <p class="text-slate-300 font-semibold">Phone</p>
+                            <p class="text-electric-blue">+91 6381897307</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="icon-text">📧</span>
+                        <div>
+                            <p class="text-slate-300 font-semibold">Email</p>
+                            <p class="text-electric-blue">praveenragavendra12@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-xl text-slate-300 mb-12 max-w-2xl">
                 I'm always excited to collaborate, discuss ideas, or explore opportunities that blend electrical engineering with AI innovation. Reach out to me through any of these platforms!
             </p>
 
             <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/praveenragav" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
+                        <div class="text-5xl mb-4">💼</div>
+                        <h3 class="text-xl font-bold text-white mb-2">LinkedIn</h3>
+                        <p class="text-slate-400 mb-4">praveenragav</p>
+                        <button class="btn-connect w-full">Connect</button>
+                    </div>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/pravynragav" target="_blank" rel="noopener noreferrer" class="group">
+                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
+                        <div class="text-5xl mb-4">💻</div>
+                        <h3 class="text-xl font-bold text-white mb-2">GitHub</h3>
+                        <p class="text-slate-400 mb-4">@pravynragav</p>
+                        <button class="btn-connect w-full">View Profile</button>
+                    </div>
+                </a>
+
                 <!-- Instagram -->
                 <a href="https://instagram.com/pravynragav" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-900 p-8 rounded-lg glow-border hover:bg-slate-800 transition-all hover:shadow-lg hover:shadow-blue-500/40">
+                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
                         <div class="text-5xl mb-4">📸</div>
                         <h3 class="text-xl font-bold text-white mb-2">Instagram</h3>
                         <p class="text-slate-400 mb-4">@pravynragav</p>
                         <button class="btn-connect w-full">Follow</button>
                     </div>
                 </a>
-
-                <!-- GitHub -->
-                <a href="https://github.com/pravynragav" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-900 p-8 rounded-lg glow-border hover:bg-slate-800 transition-all hover:shadow-lg hover:shadow-blue-500/40">
-                        <div class="text-5xl mb-4">💻</div>
-                        <h3 class="text-xl font-bold text-white mb-2">GitHub</h3>
-                        <p class="text-slate-400 mb-4">@pravynragav</p>
-                        <button class="btn-connect w-full">View</button>
-                    </div>
-                </a>
-
-                <!-- LinkedIn -->
-                <a href="https://linkedin.com/in/pravyn" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-900 p-8 rounded-lg glow-border hover:bg-slate-800 transition-all hover:shadow-lg hover:shadow-blue-500/40">
-                        <div class="text-5xl mb-4">💼</div>
-                        <h3 class="text-xl font-bold text-white mb-2">LinkedIn</h3>
-                        <p class="text-slate-400 mb-4">pravyn</p>
-                        <button class="btn-connect w-full">Connect</button>
-                    </div>
-                </a>
             </div>
 
-            <div class="bg-slate-900 p-8 rounded-lg border-t-4 border-blue-400">
+            <div class="bg-slate-800 p-8 rounded-lg border-t-4 border-blue-400">
                 <h3 class="text-xl font-bold text-white mb-2">Want to chat?</h3>
-                <p class="text-slate-300 mb-6">
-                    Feel free to reach out via any platform above. I respond promptly to inquiries about projects, collaborations, or just a technical discussion!
+                <p class="text-slate-300 mb-4">
+                    Feel free to reach out via phone, email, or any platform above. I respond promptly to inquiries about projects, collaborations, or technical discussions!
                 </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="tel:+916381897307" class="btn-connect-outline">Call Me</a>
+                    <a href="mailto:praveenragavendra12@gmail.com" class="btn-connect-outline">Send Email</a>
+                </div>
             </div>
         </div>
     </section>
@@ -417,6 +1039,10 @@
         <div class="max-w-6xl mx-auto text-center text-slate-500 text-sm">
             <p>© 2026 Praveen Ragavendra B. All rights reserved.</p>
             <p class="mt-2">Blending EEE Innovation with AI Intelligence ⚡🤖</p>
+            <p class="mt-4 text-xs">
+                Electrical & Electronics Engineer | IoT Specialist | AI Enthusiast<br/>
+                Mepco Schlenk Engineering College | Batch 2023-2027
+            </p>
         </div>
     </footer>
 
@@ -450,7 +1076,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.skill-card, .glow-border').forEach(el => {
+        document.querySelectorAll('.skill-card, .glow-border, .achievement-card, .contact-info-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
