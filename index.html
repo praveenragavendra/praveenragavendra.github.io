@@ -40,24 +40,36 @@
             cursor: none;
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 10px; height: 10px;
+        /* Custom Cursor — fast crosshair style */
+        body { cursor: none; }
+        .cursor-dot {
+            width: 6px; height: 6px;
             background: var(--accent-cyan);
             border-radius: 50%;
             position: fixed; top: 0; left: 0;
             pointer-events: none; z-index: 9999;
-            transition: transform 0.1s;
+            transform: translate(-50%, -50%);
+            transition: background 0.2s, transform 0.15s;
             mix-blend-mode: screen;
+            will-change: transform;
         }
-        .cursor-ring {
-            width: 36px; height: 36px;
-            border: 1px solid rgba(0,245,255,0.5);
-            border-radius: 50%;
+        .cursor-cross {
             position: fixed; top: 0; left: 0;
+            width: 28px; height: 28px;
             pointer-events: none; z-index: 9998;
-            transition: transform 0.15s, width 0.2s, height 0.2s;
+            transform: translate(-50%, -50%);
+            transition: width 0.15s, height 0.15s, opacity 0.2s;
+            will-change: transform;
         }
+        .cursor-cross::before, .cursor-cross::after {
+            content: ''; position: absolute;
+            background: rgba(0,245,255,0.7);
+            border-radius: 2px;
+        }
+        .cursor-cross::before { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+        .cursor-cross::after  { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+        .cursor-dot.hovered { transform: translate(-50%,-50%) scale(3); background: #fff; }
+        .cursor-cross.hovered { width: 14px; height: 14px; opacity: 0.3; }
 
         /* Grid Background */
         body::before {
@@ -423,7 +435,7 @@
         .achievement-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
 
         /* ─── CERTIFICATIONS ─── */
-        .certs-section { background: var(--bg-secondary); }
+        .certs-section { background: var(--bg-primary); }
         .certs-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
         }
@@ -440,7 +452,7 @@
         .cert-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
 
         /* ─── EDUCATION ─── */
-        .education-section { background: var(--bg-primary); }
+        .education-section { background: var(--bg-secondary); }
         .timeline { position: relative; }
         .timeline::before {
             content: ''; position: absolute; left: 22px; top: 0; bottom: 0;
@@ -588,6 +600,117 @@
             .timeline-dot { left: 6px; }
         }
 
+        /* ─── EXPERIENCE ─── */
+        .experience-section { background: var(--bg-primary); }
+
+        .exp-timeline { position: relative; }
+        .exp-timeline::before {
+            content: ''; position: absolute; left: 28px; top: 0; bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--accent-cyan), rgba(124,58,237,0.5), transparent);
+        }
+
+        .exp-item { padding-left: 80px; position: relative; margin-bottom: 2rem; }
+        .exp-dot {
+            position: absolute; left: 18px; top: 20px;
+            width: 22px; height: 22px; border-radius: 50%;
+            background: var(--bg-primary);
+            border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 16px rgba(0,245,255,0.45);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem;
+        }
+        .exp-dot.violet { border-color: #7c3aed; box-shadow: 0 0 16px rgba(124,58,237,0.45); }
+        .exp-dot.amber  { border-color: var(--accent-amber); box-shadow: 0 0 16px rgba(245,158,11,0.4); }
+
+        .exp-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 2rem 2.2rem;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .exp-card::before {
+            content: ''; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(180deg, var(--accent-cyan), #7c3aed);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .exp-card.violet-accent::before { background: linear-gradient(180deg, #7c3aed, var(--accent-cyan)); }
+        .exp-card.amber-accent::before  { background: linear-gradient(180deg, var(--accent-amber), var(--accent-cyan)); }
+        .exp-card:hover { background: var(--bg-card-hover); transform: translateX(4px); box-shadow: 0 0 40px rgba(0,245,255,0.06); }
+        .exp-card:hover::before { opacity: 1; }
+
+        .exp-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+        .exp-role { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--text-primary); }
+        .exp-badge {
+            font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em;
+            background: rgba(0,245,255,0.08); border: 1px solid rgba(0,245,255,0.2);
+            color: var(--accent-cyan); padding: 4px 10px; border-radius: 3px;
+            white-space: nowrap; align-self: center;
+        }
+        .exp-badge.violet-badge { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.3); color: #a78bfa; }
+        .exp-badge.amber-badge  { background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.3); color: var(--accent-amber); }
+
+        .exp-org {
+            font-family: 'Space Mono', monospace; font-size: 0.72rem;
+            color: var(--accent-cyan); margin-bottom: 0.25rem;
+        }
+        .exp-org.violet-org { color: #a78bfa; }
+        .exp-org.amber-org  { color: var(--accent-amber); }
+
+        .exp-period { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+        .exp-desc { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 1rem; }
+
+        .exp-bullets { list-style: none; padding: 0; margin-bottom: 1rem; }
+        .exp-bullets li {
+            color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;
+            padding: 0.3rem 0 0.3rem 1.2rem; position: relative;
+        }
+        .exp-bullets li::before {
+            content: '▸'; position: absolute; left: 0;
+            color: var(--accent-cyan); font-size: 0.75rem; top: 0.35rem;
+        }
+        .exp-bullets li.violet-bullet::before { color: #a78bfa; }
+        .exp-bullets li.amber-bullet::before  { color: var(--accent-amber); }
+
+        /* Resume Button */
+        .resume-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent;
+            border: 1px solid rgba(0,245,255,0.4);
+            color: var(--accent-cyan);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem; font-weight: 700;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            padding: 10px 20px; border-radius: 4px;
+            text-decoration: none; cursor: pointer;
+            transition: all 0.25s;
+        }
+        .resume-btn:hover {
+            background: rgba(0,245,255,0.08);
+            box-shadow: 0 0 20px rgba(0,245,255,0.2);
+            transform: translateY(-2px);
+        }
+        .resume-float {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid rgba(0,245,255,0.35);
+            color: var(--accent-cyan);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 10px 18px; border-radius: 50px;
+            text-decoration: none; backdrop-filter: blur(12px);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            transition: all 0.25s;
+        }
+        .resume-float:hover {
+            background: rgba(0,245,255,0.1);
+            box-shadow: 0 0 32px rgba(0,245,255,0.25), 0 4px 24px rgba(0,0,0,0.5);
+            transform: translateY(-2px);
+        }
+
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: var(--bg-primary); }
@@ -595,9 +718,13 @@
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-ring" id="cursor-ring"></div>
+    <!-- Floating Resume Button -->
+    <a href="Praveen_Ragavendra_resume.pdf" download class="resume-float">
+        ⬇ Resume PDF
+    </a>
+
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-cross" id="cursorCross"></div>
 
     <!-- Navigation -->
     <nav>
@@ -607,6 +734,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#connect">Connect</a></li>
@@ -837,6 +965,104 @@
         </div>
     </section>
 
+    <!-- ─── EXPERIENCE ─── -->
+    <section id="experience" class="experience-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Experience</div>
+                <h2 class="section-title">Roles &amp; <span>Journey</span></h2>
+            </div>
+            <div class="exp-timeline">
+
+                <div class="exp-item reveal">
+                    <div class="exp-dot">📰</div>
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div class="exp-role">Chief Editor &amp; Designer</div>
+                            <span class="exp-badge">Creative Leadership</span>
+                        </div>
+                        <div class="exp-org">Campus Trails Magazine · Mepco Schlenk Engineering College</div>
+                        <div class="exp-period">2024 — Present · Ongoing</div>
+                        <p class="exp-desc">Leading the editorial and visual identity of the college's flagship student magazine — from content curation to print-ready layout — while mentoring a team of student writers and photographers.</p>
+                        <ul class="exp-bullets">
+                            <li>Designed magazine layout templates from scratch using Adobe InDesign, Illustrator &amp; Photoshop</li>
+                            <li>Curated and edited student photography, ensuring visual consistency across every issue</li>
+                            <li>Led editorial meetings, delegated assignments, and maintained publication deadlines</li>
+                            <li>Developed the magazine's full visual language — typography, color palette, grid system</li>
+                            <li>Managed the full lifecycle from content planning to print-ready export</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Adobe InDesign</span><span class="tag">Illustrator</span><span class="tag">Photoshop</span><span class="tag">Editorial</span><span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item reveal">
+                    <div class="exp-dot violet">💻</div>
+                    <div class="exp-card violet-accent">
+                        <div class="exp-header">
+                            <div class="exp-role">Software Head — Hackathon Projects</div>
+                            <span class="exp-badge violet-badge">Technical Lead</span>
+                        </div>
+                        <div class="exp-org violet-org">Team Lead · IEEE Hackathon &amp; Smart India Hackathon</div>
+                        <div class="exp-period">2024 — 2025 · Project-Based</div>
+                        <p class="exp-desc">Served as the software lead across multiple hackathon teams, owning the full backend architecture and firmware communication stack. Translated hardware requirements into working software pipelines under intense time constraints.</p>
+                        <ul class="exp-bullets">
+                            <li class="violet-bullet">Architected and built the RFID-based patient registration backend for IEEE Hack the Horizon 2024 (24-hour hackathon)</li>
+                            <li class="violet-bullet">Implemented real-time ESP32 → backend communication via HTTP &amp; MQTT protocols</li>
+                            <li class="violet-bullet">Designed database retrieval logic for patient history and queue management</li>
+                            <li class="violet-bullet">Led software decisions for SIH 2025 Intelligent Pesticide Sprinkling System — IoT sensor integration + AI trigger logic</li>
+                            <li class="violet-bullet">Coordinated between hardware and software members to ensure seamless integration during live demos</li>
+                            <li class="violet-bullet">Contributed to SIH 2024 Solar Tracking System shortlisted in Top 30 of 250 teams</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">HTTP API</span><span class="tag">Backend</span><span class="tag">IoT Firmware</span><span class="tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item reveal">
+                    <div class="exp-dot amber">📸</div>
+                    <div class="exp-card amber-accent">
+                        <div class="exp-header">
+                            <div class="exp-role">Office-Bearer — Photography Club</div>
+                            <span class="exp-badge amber-badge">Event Organizer</span>
+                        </div>
+                        <div class="exp-org amber-org">Photography Club · Mepco Schlenk Engineering College</div>
+                        <div class="exp-period">2023 — Present · Active</div>
+                        <p class="exp-desc">Core organizing member responsible for planning and executing intra-college photography events. Managed event logistics, judging panels, and participant coordination for major college fests.</p>
+                        <ul class="exp-bullets">
+                            <li class="amber-bullet">Organized and coordinated Fiesta &amp; Legacy — major intra-college cultural and photography events</li>
+                            <li class="amber-bullet">Managed participant registration, judging criteria, and event timelines</li>
+                            <li class="amber-bullet">Awarded First Prize at the Poster Making Competition — Fiesta Juniors'24</li>
+                            <li class="amber-bullet">Built creative visual content and promotional materials for club activities</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Event Management</span><span class="tag">Photography</span><span class="tag">Design</span><span class="tag">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exp-item reveal">
+                    <div class="exp-dot">🤝</div>
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div class="exp-role">NSS Volunteer</div>
+                            <span class="exp-badge">Community Service</span>
+                        </div>
+                        <div class="exp-org">National Service Scheme · Mepco Schlenk Engineering College</div>
+                        <div class="exp-period">2023 — Present · Active Member</div>
+                        <p class="exp-desc">Active contributor to community service initiatives through the National Service Scheme. Engaged in social welfare programs, developing leadership and organizational skills while making a positive impact on society.</p>
+                        <div class="tag-row">
+                            <span class="tag">Community Service</span><span class="tag">Social Welfare</span><span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- ─── ACHIEVEMENTS ─── -->
     <section id="achievements" class="achievements-section">
         <div class="section-wrap">
@@ -892,66 +1118,6 @@
         </div>
     </section>
 
-    <!-- ─── CERTIFICATIONS ─── -->
-    <section id="certifications" class="certs-section">
-        <div class="section-wrap">
-            <div class="section-header reveal">
-                <div class="section-label">Certifications</div>
-                <h2 class="section-title">Courses &amp; <span>Training</span></h2>
-            </div>
-            <div class="certs-grid">
-                <div class="cert-card reveal">
-                    <div class="cert-icon">🤖</div>
-                    <div>
-                        <h4>5-Day AI Agents Intensive Course</h4>
-                        <div class="issuer">Google</div>
-                        <p>Advanced training in building and deploying intelligent AI agents</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">🐍</div>
-                    <div>
-                        <h4>Joy of Computing using Python</h4>
-                        <div class="issuer">Professional Certification</div>
-                        <p>Comprehensive Python programming and computational thinking</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">🔌</div>
-                    <div>
-                        <h4>SoC Design Implementation in FPGA Board</h4>
-                        <div class="issuer">Advanced Hardware Design</div>
-                        <p>System-on-Chip design and FPGA implementation expertise</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">📋</div>
-                    <div>
-                        <h4>Fundamentals of PCB Design</h4>
-                        <div class="issuer">PCB Design &amp; Technology</div>
-                        <p>Circuit board design, layout, and manufacturing principles</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">📊</div>
-                    <div>
-                        <h4>MATLAB for Engineering Applications</h4>
-                        <div class="issuer">Technical Computing</div>
-                        <p>Simulation, modeling, and data analysis using MATLAB</p>
-                    </div>
-                </div>
-                <div class="cert-card reveal">
-                    <div class="cert-icon">🏭</div>
-                    <div>
-                        <h4>Industrial Visits &amp; Exposure</h4>
-                        <div class="issuer">Real-World Experience</div>
-                        <p>KEL, Traco Cable, IREL — Understanding industry practices</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ─── EDUCATION ─── -->
     <section id="education" class="education-section">
         <div class="section-wrap">
@@ -986,6 +1152,58 @@
                         <h3>NSS Volunteer</h3>
                         <div class="institution">Mepco Schlenk Engineering College</div>
                         <p>Contributing to community service and social welfare through the National Service Scheme. Developing leadership and organizational skills while making a positive impact on society.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CERTIFICATIONS ─── -->
+    <section id="certifications" class="certs-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Certifications</div>
+                <h2 class="section-title">Courses &amp; <span>Training</span></h2>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🤖</div>
+                    <div>
+                        <h4>5-Day AI Agents Intensive Course</h4>
+                        <div class="issuer">Google &amp; Kaggle</div>
+                        <p>Advanced training in building and deploying intelligent AI agents</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🐍</div>
+                    <div>
+                        <h4>Joy of Computing using Python</h4>
+                        <div class="issuer">Professional Certification</div>
+                        <p>Comprehensive Python programming and computational thinking</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🔌</div>
+                    <div>
+                        <h4>SoC Design Implementation in FPGA Board</h4>
+                        <div class="issuer">Advanced Hardware Design</div>
+                        <p>System-on-Chip design and FPGA implementation expertise</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">📋</div>
+                    <div>
+                        <h4>Fundamentals of PCB Design</h4>
+                        <div class="issuer">PCB Design &amp; Technology</div>
+                        <p>Circuit board design, layout, and manufacturing principles</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">📊</div>
+                    <div>
+                        <h4>MATLAB for Engineering Applications</h4>
+                        <div class="issuer">Technical Computing</div>
+                        <p>Simulation, modeling, and data analysis using MATLAB</p>
                     </div>
                 </div>
             </div>
@@ -1149,6 +1367,13 @@
                                 <div class="c-value">praveenragavendra12@gmail.com</div>
                             </div>
                         </a>
+                        <a href="Praveen_Ragavendra_resume.pdf" download class="contact-item">
+                            <span class="c-icon">📄</span>
+                            <div>
+                                <div class="c-label">Resume</div>
+                                <div class="c-value">Download PDF</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="reveal">
@@ -1198,32 +1423,19 @@
     </footer>
 
     <script>
-        // Custom cursor
-        const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursor-ring');
-        let mx = 0, my = 0, rx = 0, ry = 0;
+        // Fast cursor — direct position, no lag
+        const dot = document.getElementById('cursorDot');
+        const cross = document.getElementById('cursorCross');
 
         document.addEventListener('mousemove', e => {
-            mx = e.clientX; my = e.clientY;
-            cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-        });
-
-        function animateRing() {
-            rx += (mx - rx - 18) * 0.12;
-            ry += (my - ry - 18) * 0.12;
-            ring.style.transform = `translate(${rx}px, ${ry}px)`;
-            requestAnimationFrame(animateRing);
-        }
-        animateRing();
+            const x = e.clientX, y = e.clientY;
+            dot.style.left = x + 'px';   dot.style.top = y + 'px';
+            cross.style.left = x + 'px'; cross.style.top = y + 'px';
+        }, { passive: true });
 
         document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform += ' scale(2)';
-                ring.style.width = '52px'; ring.style.height = '52px';
-            });
-            el.addEventListener('mouseleave', () => {
-                ring.style.width = '36px'; ring.style.height = '36px';
-            });
+            el.addEventListener('mouseenter', () => { dot.classList.add('hovered'); cross.classList.add('hovered'); });
+            el.addEventListener('mouseleave', () => { dot.classList.remove('hovered'); cross.classList.remove('hovered'); });
         });
 
         // Smooth scroll
