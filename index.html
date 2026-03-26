@@ -1,1087 +1,1249 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta name="google-site-verification" content="0Kx9VDlvanj4ajoIVHuXJ9ZSYdqlj2TR0asshH1y2VY" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Praveen Ragavendra B - EEE Student & AI Enthusiast | Blending EEE Innovation with AI Intelligence">
-    <meta name="google-site-verification" content="INSERT_VERIFICATION_CODE_HERE">
     <title>Praveen Ragavendra B | EEE & AI Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg-primary: #050a14;
+            --bg-secondary: #080f1e;
+            --bg-card: #0c1526;
+            --bg-card-hover: #111d34;
+            --accent-cyan: #00f5ff;
+            --accent-electric: #0af;
+            --accent-amber: #f59e0b;
+            --accent-violet: #7c3aed;
+            --text-primary: #e8f4f8;
+            --text-secondary: #8facc8;
+            --text-muted: #4a6580;
+            --border-subtle: rgba(0,245,255,0.1);
+            --border-glow: rgba(0,245,255,0.4);
+            --grid-line: rgba(0,245,255,0.04);
         }
-        
+
+        *, *::before, *::after {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .electric-blue {
-            color: #00d9ff;
-        }
-        
-        .electric-blue-bg {
-            background-color: #00d9ff;
-        }
-        
-        .hero-gradient {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        }
-        
-        .glow-text {
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
-        }
-        
-        .glow-border {
-            border: 2px solid #00d9ff;
-            box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
-        }
-        
-        .hover-glow:hover {
-            box-shadow: 0 0 25px rgba(0, 217, 255, 0.6);
-            transform: translateY(-3px);
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card {
-            background-color: #1e293b;
-            border-left: 4px solid #00d9ff;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-card:hover {
-            background-color: #334155;
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
-            transform: translateX(5px);
-        }
-        
-        .btn-connect {
-            background: linear-gradient(135deg, #00d9ff 0%, #0084ff 100%);
-            color: #0f172a;
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn-connect:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
-        }
-        
-        .btn-connect-outline {
-            background-color: transparent;
-            color: #00d9ff;
-            font-weight: 600;
-            padding: 12px 28px;
-            border-radius: 50px;
-            border: 2px solid #00d9ff;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn-connect-outline:hover {
-            background-color: #00d9ff;
-            color: #0f172a;
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
-            transform: scale(1.08);
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        
-        .section-title .electric-blue {
-            text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
-        }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .line-separator {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00d9ff, transparent);
-            margin: 2rem 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
         }
 
-        .tag-pill {
-            display: inline-block;
-            background-color: #334155;
-            color: #00d9ff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.875rem;
-            margin: 4px 4px 4px 0;
-            border: 1px solid #00d9ff;
-            transition: all 0.3s ease;
+        /* Custom Cursor */
+        .cursor {
+            width: 10px; height: 10px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 9999;
+            transition: transform 0.1s;
+            mix-blend-mode: screen;
+        }
+        .cursor-ring {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(0,245,255,0.5);
+            border-radius: 50%;
+            position: fixed; top: 0; left: 0;
+            pointer-events: none; z-index: 9998;
+            transition: transform 0.15s, width 0.2s, height 0.2s;
         }
 
-        .tag-pill:hover {
-            background-color: #00d9ff;
-            color: #0f172a;
-            transform: scale(1.05);
+        /* Grid Background */
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background-image:
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none; z-index: 0;
         }
 
-        .achievement-card {
-            background-color: #1e293b;
-            border-left: 4px solid #00d9ff;
-            transition: all 0.3s ease;
+        /* Radial glow blob */
+        body::after {
+            content: '';
+            position: fixed;
+            width: 900px; height: 900px;
+            background: radial-gradient(circle, rgba(0,170,255,0.055) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px; right: -200px;
+            pointer-events: none; z-index: 0;
+            animation: blobDrift 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes blobDrift {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(-120px, 80px) scale(1.15); }
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            padding: 0 2rem;
+            background: rgba(5,10,20,0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            height: 64px;
+        }
+        .nav-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem; font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 20px rgba(0,245,255,0.6);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem; letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.25s;
             position: relative;
-            overflow: hidden;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--accent-cyan);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-cyan); }
+        .nav-links a:hover::after { width: 100%; }
+
+        /* ─── HERO ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+            padding: 100px 2rem 60px;
+        }
+        .hero-content { max-width: 900px; width: 100%; position: relative; z-index: 1; }
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(0,245,255,0.06);
+            border: 1px solid rgba(0,245,255,0.2);
+            border-radius: 50px; padding: 6px 16px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.72rem; color: var(--accent-cyan);
+            letter-spacing: 0.1em; margin-bottom: 2rem;
+            animation: fadeSlideUp 0.8s ease both;
+        }
+        .hero-badge .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent-cyan);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
         }
 
-        .achievement-card:hover {
-            background-color: #334155;
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
-            transform: translateX(5px);
-        }
-
-        .tech-stack-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .hero-name {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            animation: fadeSlideUp 0.8s 0.1s ease both;
             margin-bottom: 1rem;
-            padding: 1rem;
-            background-color: #1e293b;
-            border-left: 3px solid #00d9ff;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
+        }
+        .hero-name .accent-line {
+            display: block;
+            background: linear-gradient(90deg, var(--accent-cyan), #0af, #7c3aed);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .contact-info-item:hover {
-            background-color: #334155;
-            box-shadow: 0 0 15px rgba(0, 217, 255, 0.2);
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            line-height: 1.7;
+            max-width: 580px;
+            margin-bottom: 2.5rem;
+            animation: fadeSlideUp 0.8s 0.2s ease both;
+        }
+        .hero-tagline strong { color: var(--text-primary); font-weight: 600; }
+
+        .hero-stats {
+            display: flex; gap: 2.5rem; flex-wrap: wrap;
+            margin-bottom: 3rem;
+            animation: fadeSlideUp 0.8s 0.3s ease both;
+        }
+        .stat-item {
+            display: flex; flex-direction: column; gap: 4px;
+        }
+        .stat-num {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--accent-cyan);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.72rem; letter-spacing: 0.1em;
+            text-transform: uppercase; color: var(--text-muted);
+        }
+        .stat-divider { width: 1px; background: var(--border-subtle); align-self: stretch; }
+
+        .hero-cta {
+            display: flex; gap: 1rem; flex-wrap: wrap;
+            animation: fadeSlideUp 0.8s 0.4s ease both;
+        }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 14px 28px; border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.25s;
+            position: relative; overflow: hidden;
+        }
+        .btn-primary::before {
+            content: ''; position: absolute; inset: 0;
+            background: rgba(255,255,255,0.15);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+        .btn-primary:hover::before { transform: translateX(0); }
+        .btn-primary:hover { box-shadow: 0 0 40px rgba(0,245,255,0.5); transform: translateY(-1px); }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 8px;
+            border: 1px solid rgba(0,245,255,0.35);
+            color: var(--accent-cyan);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 14px 28px; border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.25s;
+        }
+        .btn-outline:hover {
+            background: rgba(0,245,255,0.08);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(0,245,255,0.15);
         }
 
-        .icon-text {
-            font-size: 1.5rem;
-            min-width: 2rem;
+        /* Floating orb in hero */
+        .hero-orb {
+            position: absolute; right: -80px; top: 50%;
+            transform: translateY(-50%);
+            width: 520px; height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 40%, rgba(0,170,255,0.12), rgba(124,58,237,0.06) 60%, transparent 80%);
+            border: 1px solid rgba(0,245,255,0.06);
+            animation: orbFloat 8s ease-in-out infinite;
+            pointer-events: none;
         }
+        .hero-orb::before {
+            content: ''; position: absolute; inset: 30px;
+            border-radius: 50%;
+            border: 1px solid rgba(0,245,255,0.08);
+        }
+        .hero-orb::after {
+            content: '⚡'; position: absolute;
+            top: 50%; left: 50%; transform: translate(-50%,-50%);
+            font-size: 5rem; opacity: 0.15;
+        }
+        @keyframes orbFloat {
+            0%, 100% { transform: translateY(-50%) rotate(0deg); }
+            50% { transform: translateY(-52%) rotate(5deg); }
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── SECTIONS ─── */
+        section { position: relative; z-index: 1; }
+
+        .section-wrap { max-width: 1200px; margin: 0 auto; padding: 100px 2rem; }
+
+        .section-header { margin-bottom: 3.5rem; }
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem; letter-spacing: 0.2em;
+            text-transform: uppercase; color: var(--accent-cyan);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .section-label::after {
+            content: ''; flex: 0 0 40px; height: 1px;
+            background: var(--accent-cyan); opacity: 0.5;
+        }
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--text-primary);
+        }
+        .section-title span {
+            background: linear-gradient(90deg, var(--accent-cyan), #0af);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ─── ABOUT ─── */
+        .about-section { background: var(--bg-secondary); }
+        .about-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+        }
+        .about-text p {
+            color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem; font-size: 1.05rem;
+        }
+        .about-text p strong { color: var(--accent-cyan); font-weight: 600; }
+
+        .about-cards { display: flex; flex-direction: column; gap: 1rem; }
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--accent-cyan);
+            border-radius: 6px; padding: 1.2rem 1.4rem;
+            display: flex; align-items: center; gap: 1rem;
+            transition: all 0.3s;
+        }
+        .about-card:hover {
+            background: var(--bg-card-hover);
+            border-left-color: var(--accent-amber);
+            transform: translateX(6px);
+            box-shadow: 0 0 24px rgba(0,245,255,0.08);
+        }
+        .about-card .icon { font-size: 1.5rem; flex-shrink: 0; }
+        .about-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); margin-bottom: 2px; font-family: 'Space Mono', monospace; }
+        .about-card p { font-size: 0.9rem; color: var(--text-secondary); }
+
+        /* ─── SKILLS ─── */
+        .skills-section { background: var(--bg-primary); }
+        .skills-category { margin-bottom: 3rem; }
+        .skills-cat-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem; letter-spacing: 0.15em;
+            text-transform: uppercase; color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .skills-cat-title::before { content: '//'; color: var(--accent-cyan); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.4rem;
+            transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .skill-card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), #7c3aed);
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.3s;
+        }
+        .skill-card:hover { background: var(--bg-card-hover); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 24px rgba(0,245,255,0.07); }
+        .skill-card:hover::before { transform: scaleX(1); }
+        .skill-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+        .skill-card p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.8rem; line-height: 1.5; }
+        .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem; letter-spacing: 0.06em;
+            background: rgba(0,245,255,0.07);
+            border: 1px solid rgba(0,245,255,0.18);
+            color: var(--accent-cyan);
+            padding: 3px 9px; border-radius: 3px;
+        }
+
+        /* ─── PROJECTS ─── */
+        .projects-section { background: var(--bg-secondary); }
+        .projects-grid { display: flex; flex-direction: column; gap: 1.5rem; }
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 2.5rem;
+            display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .project-card::after {
+            content: ''; position: absolute;
+            left: 0; top: 0; bottom: 0; width: 3px;
+            background: linear-gradient(180deg, var(--accent-cyan), #7c3aed);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .project-card:hover { background: var(--bg-card-hover); transform: translateX(4px); box-shadow: 0 0 40px rgba(0,245,255,0.06); }
+        .project-card:hover::after { opacity: 1; }
+        .project-icon { font-size: 2.5rem; line-height: 1; }
+        .project-meta { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        .project-card h3 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem; }
+        .project-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.2rem; }
+
+        /* ─── ACHIEVEMENTS ─── */
+        .achievements-section { background: var(--bg-primary); }
+        .achievements-grid { display: flex; flex-direction: column; gap: 1rem; }
+        .achievement-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.8rem 2rem;
+            display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem; align-items: start;
+            transition: all 0.3s;
+        }
+        .achievement-card:hover { background: var(--bg-card-hover); box-shadow: 0 0 32px rgba(0,245,255,0.06); transform: translateX(4px); }
+        .achievement-icon { font-size: 1.8rem; text-align: center; padding-top: 2px; }
+        .achievement-card h4 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .achievement-card .sub { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--accent-cyan); margin-bottom: 0.5rem; }
+        .achievement-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+        /* ─── CERTIFICATIONS ─── */
+        .certs-section { background: var(--bg-secondary); }
+        .certs-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;
+        }
+        .cert-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.5rem;
+            display: flex; gap: 1rem; align-items: flex-start;
+            transition: all 0.3s;
+        }
+        .cert-card:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.2); transform: translateY(-3px); }
+        .cert-icon { font-size: 1.8rem; flex-shrink: 0; }
+        .cert-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .cert-card .issuer { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--accent-cyan); margin-bottom: 0.4rem; }
+        .cert-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ─── EDUCATION ─── */
+        .education-section { background: var(--bg-primary); }
+        .timeline { position: relative; }
+        .timeline::before {
+            content: ''; position: absolute; left: 22px; top: 0; bottom: 0;
+            width: 1px; background: linear-gradient(180deg, var(--accent-cyan), transparent);
+        }
+        .timeline-item { padding-left: 68px; position: relative; margin-bottom: 2.5rem; }
+        .timeline-dot {
+            position: absolute; left: 14px; top: 16px;
+            width: 17px; height: 17px; border-radius: 50%;
+            background: var(--bg-primary); border: 2px solid var(--accent-cyan);
+            box-shadow: 0 0 12px rgba(0,245,255,0.4);
+        }
+        .timeline-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 8px; padding: 2rem;
+            transition: all 0.3s;
+        }
+        .timeline-card:hover { background: var(--bg-card-hover); box-shadow: 0 0 32px rgba(0,245,255,0.06); }
+        .timeline-period { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent-cyan); margin-bottom: 0.5rem; }
+        .timeline-card h3 { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .timeline-card .institution { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.7rem; }
+        .timeline-card .gpa { font-family: 'Space Mono', monospace; font-size: 0.8rem; color: var(--accent-amber); margin-bottom: 0.8rem; }
+        .timeline-card p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; }
+
+        /* ─── INDUSTRIAL VISITS ─── */
+        .visits-section { background: var(--bg-secondary); }
+        .visits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+        .visit-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        .visit-card:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.2); transform: translateY(-3px); }
+        .visit-card .v-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+        .visit-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; }
+        .visit-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* ─── INTERESTS ─── */
+        .interests-section { background: var(--bg-primary); }
+        .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+        .interest-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.5rem;
+            transition: all 0.3s; position: relative; overflow: hidden;
+        }
+        .interest-card::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(0,245,255,0.04), rgba(124,58,237,0.04));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .interest-card:hover { transform: translateY(-4px); border-color: rgba(0,245,255,0.2); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+        .interest-card:hover::before { opacity: 1; }
+        .interest-card .i-icon { font-size: 1.8rem; margin-bottom: 0.75rem; display: block; }
+        .interest-card h4 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+        .interest-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* ─── SOFT SKILLS ─── */
+        .softskills-section { background: var(--bg-secondary); }
+        .soft-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+        .soft-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.5rem;
+            display: flex; align-items: flex-start; gap: 1rem;
+            transition: all 0.3s;
+        }
+        .soft-card:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.2); }
+        .soft-card .s-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+        .soft-card h4 { font-size: 0.92rem; font-weight: 600; color: var(--text-primary); margin-bottom: 4px; }
+        .soft-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* ─── LANGUAGES ─── */
+        .languages-section { background: var(--bg-primary); }
+        .lang-grid { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .lang-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 2rem 3rem;
+            text-align: center; flex: 1; min-width: 200px;
+            transition: all 0.3s;
+        }
+        .lang-card:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.25); }
+        .lang-card .l-icon { font-size: 2rem; display: block; margin-bottom: 0.75rem; }
+        .lang-card h4 { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .lang-card .level { font-family: 'Space Mono', monospace; font-size: 0.7rem; color: var(--accent-cyan); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .lang-card p { font-size: 0.82rem; color: var(--text-muted); }
+
+        /* ─── CONNECT ─── */
+        .connect-section { background: var(--bg-secondary); }
+        .connect-intro { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; max-width: 600px; margin-bottom: 3rem; }
+
+        .connect-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .direct-contacts { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+        .contact-item {
+            display: flex; align-items: center; gap: 1rem;
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1rem 1.25rem;
+            transition: all 0.3s; text-decoration: none;
+        }
+        .contact-item:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.25); transform: translateX(4px); }
+        .contact-item .c-icon { font-size: 1.3rem; }
+        .contact-item .c-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: 'Space Mono', monospace; }
+        .contact-item .c-value { font-size: 0.95rem; color: var(--accent-cyan); }
+
+        .social-links { display: flex; flex-direction: column; gap: 1rem; }
+        .social-card {
+            background: var(--bg-card); border: 1px solid var(--border-subtle);
+            border-radius: 6px; padding: 1.4rem 1.5rem;
+            display: flex; align-items: center; justify-content: space-between;
+            text-decoration: none; transition: all 0.3s;
+        }
+        .social-card:hover { background: var(--bg-card-hover); border-color: rgba(0,245,255,0.3); transform: translateX(4px); }
+        .social-left { display: flex; align-items: center; gap: 1rem; }
+        .social-icon { font-size: 1.5rem; }
+        .social-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text-primary); }
+        .social-handle { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--text-muted); }
+        .social-arrow { color: var(--accent-cyan); font-size: 1.2rem; opacity: 0.5; transition: all 0.3s; }
+        .social-card:hover .social-arrow { opacity: 1; transform: translateX(4px); }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--bg-primary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 2.5rem 2rem; text-align: center;
+        }
+        footer .footer-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem; color: var(--accent-cyan);
+            letter-spacing: 0.1em; margin-bottom: 0.75rem;
+        }
+        footer p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.8; }
+        footer .footer-tagline { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.08em; }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .about-grid, .connect-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-orb { display: none; }
+            .project-card { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            .timeline::before { left: 14px; }
+            .timeline-item { padding-left: 48px; }
+            .timeline-dot { left: 6px; }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: rgba(0,245,255,0.3); border-radius: 4px; }
     </style>
 </head>
-<body class="smooth-scroll">
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 w-full bg-slate-900 bg-opacity-95 backdrop-blur-md z-50 border-b border-blue-500 border-opacity-20">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold electric-blue glow-text">PRB</div>
-            <div class="hidden md:flex gap-8">
-                <a href="#about" class="text-slate-300 hover:electric-blue transition-colors">About</a>
-                <a href="#skills" class="text-slate-300 hover:electric-blue transition-colors">Skills</a>
-                <a href="#projects" class="text-slate-300 hover:electric-blue transition-colors">Projects</a>
-                <a href="#achievements" class="text-slate-300 hover:electric-blue transition-colors">Achievements</a>
-                <a href="#experience" class="text-slate-300 hover:electric-blue transition-colors">Education</a>
-                <a href="#connect" class="text-slate-300 hover:electric-blue transition-colors">Connect</a>
-            </div>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">PRB_</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#connect">Connect</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-gradient min-h-screen flex items-center justify-center pt-20 px-4">
-        <div class="max-w-6xl mx-auto text-center">
-            <div class="mb-8 float-animation">
-                <div class="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-blue-400 flex items-center justify-center">
-                    <span class="text-4xl">⚡</span>
-                </div>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-black mb-4 text-white glow-text">
-                Praveen Ragavendra B
+    <!-- ─── HERO ─── -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span> Available for collaborations &amp; projects</div>
+            <h1 class="hero-name">
+                Praveen<br>
+                <span class="accent-line">Ragavendra B</span>
             </h1>
-            <p class="text-lg md:text-xl font-semibold electric-blue mb-4">
-                Electrical and Electronics Engineer
+            <p class="hero-tagline">
+                Electrical &amp; Electronics Engineer blending <strong>hardware intelligence</strong> with <strong>AI innovation</strong> — from smart grids to embedded systems.
             </p>
-            <p class="text-xl md:text-2xl font-light text-slate-300 mb-8">
-                Blending <span class="electric-blue font-bold">EEE Innovation</span> with <span class="electric-blue font-bold">AI Intelligence</span>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">8.06</span>
+                    <span class="stat-label">GPA / 10</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">2+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">5+</span>
+                    <span class="stat-label">Certifications</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-num">4+</span>
+                    <span class="stat-label">Hackathons</span>
+                </div>
+            </div>
+            <div class="hero-cta">
+                <a href="#connect" class="btn-primary">Get In Touch →</a>
+                <a href="#projects" class="btn-outline">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-orb"></div>
+    </section>
+
+    <!-- ─── ABOUT ─── -->
+    <section id="about" class="about-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">About</div>
+                <h2 class="section-title">Who I <span>Am</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p>I'm an Electrical and Electronics Engineering student at <strong>Mepco Schlenk Engineering College</strong>, passionate about bridging the gap between traditional electrical engineering and cutting-edge artificial intelligence.</p>
+                    <p>My journey focuses on understanding complex electrical systems while exploring the transformative potential of <strong>AI agents and machine learning</strong> in solving real-world problems — from smart grid optimization to IoT health systems.</p>
+                    <p>Beyond academics, I actively contribute to society as an <strong>NSS volunteer</strong>, believing in giving back to the community while developing leadership and organizational skills.</p>
+                </div>
+                <div class="about-cards reveal">
+                    <div class="about-card">
+                        <span class="icon">⚡</span>
+                        <div><h4>Core Focus</h4><p>Electrical Engineering &amp; Circuit Design</p></div>
+                    </div>
+                    <div class="about-card">
+                        <span class="icon">🤖</span>
+                        <div><h4>Passion</h4><p>AI Agents &amp; Machine Learning</p></div>
+                    </div>
+                    <div class="about-card">
+                        <span class="icon">📡</span>
+                        <div><h4>Specialization</h4><p>IoT, Embedded Systems &amp; Smart Automation</p></div>
+                    </div>
+                    <div class="about-card">
+                        <span class="icon">🤝</span>
+                        <div><h4>Community</h4><p>NSS Volunteer &amp; Social Contributor</p></div>
+                    </div>
+                    <div class="about-card">
+                        <span class="icon">📷</span>
+                        <div><h4>Creative Side</h4><p>Chief Editor, Campus Trails Magazine</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SKILLS ─── -->
+    <section id="skills" class="skills-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Skills</div>
+                <h2 class="section-title">Technical <span>Arsenal</span></h2>
+            </div>
+
+            <div class="skills-category reveal">
+                <div class="skills-cat-title">Programming Languages</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>C &amp; C++</h4>
+                        <p>Core programming fundamentals and system-level programming</p>
+                        <div class="tag-row"><span class="tag">Data Structures</span><span class="tag">Algorithms</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Python</h4>
+                        <p>Strong Python skills for AI/ML and automation</p>
+                        <div class="tag-row"><span class="tag">ML</span><span class="tag">Automation</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>SQL</h4>
+                        <p>Database design and query optimization</p>
+                        <div class="tag-row"><span class="tag">Databases</span><span class="tag">Backend</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category reveal">
+                <div class="skills-cat-title">Core EEE &amp; IoT</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>Circuit Analysis &amp; Design</h4>
+                        <p>Analyzing and designing electrical circuits</p>
+                        <div class="tag-row"><span class="tag">Circuits</span><span class="tag">Simulation</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Power Systems</h4>
+                        <p>Generation, transmission, and distribution</p>
+                        <div class="tag-row"><span class="tag">Systems</span><span class="tag">Analysis</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Electrical Machines</h4>
+                        <p>Motors, generators, and transformers</p>
+                        <div class="tag-row"><span class="tag">Machines</span><span class="tag">Drives</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>ESP32 &amp; Microcontrollers</h4>
+                        <p>IoT embedded systems development</p>
+                        <div class="tag-row"><span class="tag">ESP32</span><span class="tag">Embedded</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>MQTT &amp; IoT Protocols</h4>
+                        <p>Hardware-software integration and communication</p>
+                        <div class="tag-row"><span class="tag">MQTT</span><span class="tag">IoT</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>PCB Design</h4>
+                        <p>Circuit board design and layout</p>
+                        <div class="tag-row"><span class="tag">PCB</span><span class="tag">FPGA</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category reveal">
+                <div class="skills-cat-title">AI &amp; Machine Learning</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>AI Agents</h4>
+                        <p>Building intelligent agents for autonomous decision-making</p>
+                        <div class="tag-row"><span class="tag">AI Agents</span><span class="tag">LLM</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Machine Learning</h4>
+                        <p>ML fundamentals and LSTM models</p>
+                        <div class="tag-row"><span class="tag">ML</span><span class="tag">LSTM</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Data Science</h4>
+                        <p>Data analysis and forecasting</p>
+                        <div class="tag-row"><span class="tag">Analysis</span><span class="tag">Forecasting</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-category reveal">
+                <div class="skills-cat-title">Tools &amp; Platforms</div>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>Version Control</h4>
+                        <p>Collaborative development workflows</p>
+                        <div class="tag-row"><span class="tag">Git</span><span class="tag">GitHub</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>IDEs &amp; Editors</h4>
+                        <p>Development environment tools</p>
+                        <div class="tag-row"><span class="tag">VS Code</span><span class="tag">Arduino IDE</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Design &amp; Simulation</h4>
+                        <p>Engineering simulation and modeling</p>
+                        <div class="tag-row"><span class="tag">MATLAB</span><span class="tag">Simulation</span></div>
+                    </div>
+                    <div class="skill-card">
+                        <h4>Hardware Platforms</h4>
+                        <p>Embedded system prototyping</p>
+                        <div class="tag-row"><span class="tag">Arduino</span><span class="tag">FPGA</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROJECTS ─── -->
+    <section id="projects" class="projects-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Projects</div>
+                <h2 class="section-title">Featured <span>Work</span></h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="project-icon">⚡🔋</div>
+                    <div>
+                        <div class="project-meta">July 2025 — December 2025 · Ongoing</div>
+                        <h3>Smart Grid Demand Forecasting &amp; Dynamic Load Balancing</h3>
+                        <p>Designing a data pipeline for energy demand forecasting using machine learning. Exploring LSTM approach for load prediction and defining workflow for dynamic load balancing logic. Combining EEE principles with AI to optimize smart grid operations.</p>
+                        <div class="tag-row"><span class="tag">LSTM</span><span class="tag">Data Pipeline</span><span class="tag">Energy Systems</span><span class="tag">Machine Learning</span></div>
+                    </div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="project-icon">🏥📱</div>
+                    <div>
+                        <div class="project-meta">January 2025 — May 2025 · Completed</div>
+                        <h3>AI-Integrated RFID-Based Smart Health Monitoring System</h3>
+                        <p>Built RFID-based patient registration system with backend workflow. Implemented real-time ESP32 → backend communication using HTTP/MQTT protocols. Designed database retrieval logic for patient history. Hackathon submission demonstrating hardware-software integration excellence.</p>
+                        <div class="tag-row"><span class="tag">RFID</span><span class="tag">ESP32</span><span class="tag">MQTT</span><span class="tag">Backend</span><span class="tag">IoT</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── ACHIEVEMENTS ─── -->
+    <section id="achievements" class="achievements-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Achievements</div>
+                <h2 class="section-title">Hackathons &amp; <span>Recognition</span></h2>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🥇</div>
+                    <div>
+                        <div class="sub">IEEE &amp; KPR College, Coimbatore · 24-Hour Hackathon</div>
+                        <h4>Hack the Horizon 2024 — 7th Place</h4>
+                        <p>AI-Based Remote Health Monitoring System with RFID and ESP32 integration.</p>
+                        <div class="tag-row" style="margin-top:0.75rem;"><span class="tag">AI Agents</span><span class="tag">Health Monitoring</span><span class="tag">RFID</span><span class="tag">ESP32</span></div>
+                    </div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🏆</div>
+                    <div>
+                        <div class="sub">Smart India Hackathon 2025</div>
+                        <h4>Intelligent Pesticide Sprinkling System</h4>
+                        <p>Developed intelligent automation combining IoT sensors with AI decision-making for optimized agricultural operations.</p>
+                        <div class="tag-row" style="margin-top:0.75rem;"><span class="tag">IoT</span><span class="tag">AI</span><span class="tag">Agriculture</span><span class="tag">Automation</span></div>
+                    </div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">⭐</div>
+                    <div>
+                        <div class="sub">Shortlisted from 250 Teams</div>
+                        <h4>Smart India Hackathon 2024 — Top 30</h4>
+                        <p>Non-Electrical Solar Tracking System — innovative renewable energy solution combining electrical engineering with smart tracking algorithms.</p>
+                        <div class="tag-row" style="margin-top:0.75rem;"><span class="tag">Solar Energy</span><span class="tag">Tracking</span><span class="tag">Renewable</span></div>
+                    </div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">🎨</div>
+                    <div>
+                        <div class="sub">Fiesta Juniors'24 · Mepco Schlenk Engineering College</div>
+                        <h4>First Prize — Poster Making Competition</h4>
+                        <p>Recognition for creative technical visualization and presentation skills.</p>
+                    </div>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon">👔</div>
+                    <div>
+                        <div class="sub">Leadership</div>
+                        <h4>Chief Editor &amp; Office-Bearer</h4>
+                        <p><strong style="color:var(--text-primary)">Chief Editor &amp; Designer</strong> — Campus Trails Magazine · Designed templates, curated student photography, led editorial meetings.<br><br><strong style="color:var(--text-primary)">Office-Bearer</strong> — Photography Club · Organized intra-college events including Fiesta and Legacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CERTIFICATIONS ─── -->
+    <section id="certifications" class="certs-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Certifications</div>
+                <h2 class="section-title">Courses &amp; <span>Training</span></h2>
+            </div>
+            <div class="certs-grid">
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🤖</div>
+                    <div>
+                        <h4>5-Day AI Agents Intensive Course</h4>
+                        <div class="issuer">Google</div>
+                        <p>Advanced training in building and deploying intelligent AI agents</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🐍</div>
+                    <div>
+                        <h4>Joy of Computing using Python</h4>
+                        <div class="issuer">Professional Certification</div>
+                        <p>Comprehensive Python programming and computational thinking</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🔌</div>
+                    <div>
+                        <h4>SoC Design Implementation in FPGA Board</h4>
+                        <div class="issuer">Advanced Hardware Design</div>
+                        <p>System-on-Chip design and FPGA implementation expertise</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">📋</div>
+                    <div>
+                        <h4>Fundamentals of PCB Design</h4>
+                        <div class="issuer">PCB Design &amp; Technology</div>
+                        <p>Circuit board design, layout, and manufacturing principles</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">📊</div>
+                    <div>
+                        <h4>MATLAB for Engineering Applications</h4>
+                        <div class="issuer">Technical Computing</div>
+                        <p>Simulation, modeling, and data analysis using MATLAB</p>
+                    </div>
+                </div>
+                <div class="cert-card reveal">
+                    <div class="cert-icon">🏭</div>
+                    <div>
+                        <h4>Industrial Visits &amp; Exposure</h4>
+                        <div class="issuer">Real-World Experience</div>
+                        <p>KEL, Traco Cable, IREL — Understanding industry practices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── EDUCATION ─── -->
+    <section id="education" class="education-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Education</div>
+                <h2 class="section-title">Academic <span>Journey</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-period">2023 — 2027 · Currently Pursuing</div>
+                        <h3>B.E. in Electrical &amp; Electronics Engineering</h3>
+                        <div class="institution">Mepco Schlenk Engineering College, Sivakasi</div>
+                        <div class="gpa">GPA: 8.06 / 10</div>
+                        <p>Pursuing comprehensive education in EEE with specialization in modern technological innovations. Actively engaged in AI, IoT, and embedded systems alongside core electrical engineering principles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-period">2022 — 2023</div>
+                        <h3>Higher Secondary Education</h3>
+                        <div class="institution">Vivekanda Vidhyalaya Matric School, Kodaikanal</div>
+                        <p>Strong foundation in Physics, Chemistry, and Mathematics with a focus on science and technology fundamentals.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-card">
+                        <div class="timeline-period">Ongoing · Active Member</div>
+                        <h3>NSS Volunteer</h3>
+                        <div class="institution">Mepco Schlenk Engineering College</div>
+                        <p>Contributing to community service and social welfare through the National Service Scheme. Developing leadership and organizational skills while making a positive impact on society.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── INDUSTRIAL VISITS ─── -->
+    <section id="visits" class="visits-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Industry</div>
+                <h2 class="section-title">Industrial <span>Visits</span></h2>
+            </div>
+            <div class="visits-grid">
+                <div class="visit-card reveal">
+                    <div class="v-icon">🏢</div>
+                    <h4>Kerala Electrical &amp; Allied Engineering Co. Ltd. (KEL)</h4>
+                    <p>Exposure to electrical equipment manufacturing and quality standards in industrial settings.</p>
+                </div>
+                <div class="visit-card reveal">
+                    <div class="v-icon">🔌</div>
+                    <h4>Traco Cable Company Ltd.</h4>
+                    <p>Understanding cable manufacturing processes, specifications, and industrial-scale operations in Kerala.</p>
+                </div>
+                <div class="visit-card reveal">
+                    <div class="v-icon">⚛️</div>
+                    <h4>Indian Rare Earths (IREL) Ltd.</h4>
+                    <p>Learning about rare earth mineral processing and applications in advanced technologies at Aluva, Kochi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── INTERESTS ─── -->
+    <section id="interests" class="interests-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Interests</div>
+                <h2 class="section-title">Area of <span>Interest</span></h2>
+            </div>
+            <div class="interests-grid">
+                <div class="interest-card reveal">
+                    <span class="i-icon">🖥️</span>
+                    <h4>Backend &amp; Systems Engineering</h4>
+                    <p>Designing robust systems and infrastructure for scalable applications</p>
+                </div>
+                <div class="interest-card reveal">
+                    <span class="i-icon">📡</span>
+                    <h4>IoT Software Systems</h4>
+                    <p>Creating intelligent IoT solutions connecting hardware and cloud systems</p>
+                </div>
+                <div class="interest-card reveal">
+                    <span class="i-icon">🤖</span>
+                    <h4>Intelligent Automation</h4>
+                    <p>Building smart systems that optimize processes using AI and machine learning</p>
+                </div>
+                <div class="interest-card reveal">
+                    <span class="i-icon">📊</span>
+                    <h4>Applied ML for Infrastructure</h4>
+                    <p>Leveraging machine learning for smart grid and energy optimization</p>
+                </div>
+                <div class="interest-card reveal">
+                    <span class="i-icon">⚡</span>
+                    <h4>Smart Energy &amp; Data Systems</h4>
+                    <p>Combining power systems with data-driven solutions for sustainability</p>
+                </div>
+                <div class="interest-card reveal">
+                    <span class="i-icon">🌱</span>
+                    <h4>Sustainable Technology</h4>
+                    <p>Developing innovative solutions for renewable energy and environmental challenges</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── SOFT SKILLS ─── -->
+    <section id="softskills" class="softskills-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Soft Skills</div>
+                <h2 class="section-title">Human <span>Edge</span></h2>
+            </div>
+            <div class="soft-grid">
+                <div class="soft-card reveal">
+                    <span class="s-icon">🎯</span>
+                    <div><h4>Problem Solving</h4><p>Analytical approach to complex technical challenges</p></div>
+                </div>
+                <div class="soft-card reveal">
+                    <span class="s-icon">🧠</span>
+                    <div><h4>Analytical Thinking</h4><p>Data-driven decision making and system analysis</p></div>
+                </div>
+                <div class="soft-card reveal">
+                    <span class="s-icon">🔗</span>
+                    <div><h4>Systems Thinking</h4><p>Understanding complex interconnected systems</p></div>
+                </div>
+                <div class="soft-card reveal">
+                    <span class="s-icon">💬</span>
+                    <div><h4>Communication</h4><p>Effective technical and non-technical communication</p></div>
+                </div>
+                <div class="soft-card reveal">
+                    <span class="s-icon">👥</span>
+                    <div><h4>Team Collaboration</h4><p>Working effectively in cross-functional teams</p></div>
+                </div>
+                <div class="soft-card reveal">
+                    <span class="s-icon">📚</span>
+                    <div><h4>Continuous Learning</h4><p>Self-motivated and eager to acquire new skills</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── LANGUAGES ─── -->
+    <section id="languages" class="languages-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Languages</div>
+                <h2 class="section-title">Languages <span>Known</span></h2>
+            </div>
+            <div class="lang-grid reveal">
+                <div class="lang-card">
+                    <span class="l-icon">🌍</span>
+                    <h4>English</h4>
+                    <div class="level">Professional Level</div>
+                    <p>Business communication, technical documentation, and presentation</p>
+                </div>
+                <div class="lang-card">
+                    <span class="l-icon">🇮🇳</span>
+                    <h4>Tamil</h4>
+                    <div class="level">Native</div>
+                    <p>Fluent in reading, writing, and speaking</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CONNECT ─── -->
+    <section id="connect" class="connect-section">
+        <div class="section-wrap">
+            <div class="section-header reveal">
+                <div class="section-label">Connect</div>
+                <h2 class="section-title">Let's <span>Talk</span></h2>
+            </div>
+            <p class="connect-intro reveal">
+                I'm always excited to collaborate, discuss ideas, or explore opportunities that blend electrical engineering with AI innovation. Reach out through any of these channels.
             </p>
-            <div class="flex gap-4 justify-center flex-wrap mb-12">
-                <a href="#connect" class="btn-connect">Get In Touch</a>
-                <a href="#about" class="btn-connect-outline">Learn More</a>
-            </div>
-            <div class="text-slate-400 text-sm">
-                <p>Electrical & Electronics Engineering Student | Mepco Schlenk Engineering College</p>
-                <p class="text-xs mt-2">Batch 2023-2027 | GPA: 8.06/10</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Me Section -->
-    <section id="about" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                About <span class="electric-blue">Me</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="bg-slate-800 p-8 rounded-lg glow-border">
-                        <h3 class="text-2xl font-bold mb-4 electric-blue">Who I Am</h3>
-                        <p class="text-slate-300 mb-4 leading-relaxed">
-                            I'm an Electrical and Electronics Engineering student at Mepco Schlenk Engineering College, passionate about bridging the gap between traditional electrical engineering and cutting-edge artificial intelligence.
-                        </p>
-                        <p class="text-slate-300 mb-4 leading-relaxed">
-                            My journey focuses on understanding complex electrical systems while exploring the transformative potential of AI agents and machine learning in solving real-world problems.
-                        </p>
-                        <p class="text-slate-300 leading-relaxed">
-                            Beyond academics, I actively contribute to society as an <span class="electric-blue font-semibold">NSS (National Service Scheme) volunteer</span>, believing in giving back to the community.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="space-y-6">
-                    <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                        <h4 class="text-xl font-bold electric-blue mb-2">⚡ Core Focus</h4>
-                        <p class="text-slate-300">Electrical Engineering & Circuit Design</p>
-                    </div>
-                    <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                        <h4 class="text-xl font-bold electric-blue mb-2">🤖 Passion</h4>
-                        <p class="text-slate-300">AI Agents & Machine Learning</p>
-                    </div>
-                    <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                        <h4 class="text-xl font-bold electric-blue mb-2">🤝 Community</h4>
-                        <p class="text-slate-300">NSS Volunteer & Social Contributor</p>
-                    </div>
-                    <div class="bg-slate-800 p-6 rounded-lg border-l-4 border-blue-400 hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                        <h4 class="text-xl font-bold electric-blue mb-2">🔧 Specialization</h4>
-                        <p class="text-slate-300">IoT, Embedded Systems & Smart Automation</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Technical Skills Section -->
-    <section id="skills" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-title">
-                Technical <span class="electric-blue">Skills</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <!-- Programming Skills -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                    <span>💻</span> Programming Languages
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">C & C++</h4>
-                        <p class="text-slate-400 text-sm mb-3">Core programming fundamentals and system-level programming</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Data Structures</span>
-                            <span class="tag-pill">Algorithms</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Python</h4>
-                        <p class="text-slate-400 text-sm mb-3">Strong Python skills for AI/ML and automation</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">ML</span>
-                            <span class="tag-pill">Automation</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">SQL</h4>
-                        <p class="text-slate-400 text-sm mb-3">Database design and query optimization</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Databases</span>
-                            <span class="tag-pill">Backend</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Core EEE Skills -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                    <span>⚡</span> Core EEE & IoT
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Circuit Analysis & Design</h4>
-                        <p class="text-slate-400 text-sm mb-3">Analyzing and designing electrical circuits</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Circuits</span>
-                            <span class="tag-pill">Simulation</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Power Systems</h4>
-                        <p class="text-slate-400 text-sm mb-3">Generation, transmission, and distribution</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Systems</span>
-                            <span class="tag-pill">Analysis</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Electrical Machines</h4>
-                        <p class="text-slate-400 text-sm mb-3">Motors, generators, and transformers</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Machines</span>
-                            <span class="tag-pill">Drives</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">ESP32 & Microcontrollers</h4>
-                        <p class="text-slate-400 text-sm mb-3">IoT embedded systems development</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">ESP32</span>
-                            <span class="tag-pill">Embedded</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">MQTT & IoT Protocols</h4>
-                        <p class="text-slate-400 text-sm mb-3">Hardware-software integration and communication</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">MQTT</span>
-                            <span class="tag-pill">IoT</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">PCB Design</h4>
-                        <p class="text-slate-400 text-sm mb-3">Circuit board design and layout</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">PCB</span>
-                            <span class="tag-pill">FPGA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AI & ML Skills -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                    <span>🤖</span> AI & Machine Learning
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">AI Agents</h4>
-                        <p class="text-slate-400 text-sm mb-3">Building intelligent agents for autonomous decision-making</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">AI Agents</span>
-                            <span class="tag-pill">LLM</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Machine Learning</h4>
-                        <p class="text-slate-400 text-sm mb-3">ML fundamentals and LSTM models</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">ML</span>
-                            <span class="tag-pill">LSTM</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Data Science</h4>
-                        <p class="text-slate-400 text-sm mb-3">Data analysis and forecasting</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Analysis</span>
-                            <span class="tag-pill">Forecasting</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tools & Platforms -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 electric-blue flex items-center gap-2">
-                    <span>🛠️</span> Tools & Platforms
-                </h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Version Control</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Git</span>
-                            <span class="tag-pill">GitHub</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">IDEs & Editors</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">VS Code</span>
-                            <span class="tag-pill">Arduino IDE</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Design Tools</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">MATLAB</span>
-                            <span class="tag-pill">Simulation</span>
-                        </div>
-                    </div>
-                    <div class="skill-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-3 text-white">Hardware</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="tag-pill">Arduino</span>
-                            <span class="tag-pill">FPGA</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Soft Skills Section -->
-    <section id="soft-skills" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                Soft <span class="electric-blue">Skills</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-4">
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">🎯</span> Problem Solving
-                        </h4>
-                        <p class="text-slate-300">Analytical approach to complex technical challenges</p>
-                    </div>
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">🧠</span> Analytical Thinking
-                        </h4>
-                        <p class="text-slate-300">Data-driven decision making and system analysis</p>
-                    </div>
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">🔗</span> Systems Thinking
-                        </h4>
-                        <p class="text-slate-300">Understanding complex interconnected systems</p>
-                    </div>
-                </div>
-                <div class="space-y-4">
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">💬</span> Communication
-                        </h4>
-                        <p class="text-slate-300">Effective technical and non-technical communication</p>
-                    </div>
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">👥</span> Team Collaboration
-                        </h4>
-                        <p class="text-slate-300">Working effectively in cross-functional teams</p>
-                    </div>
-                    <div class="achievement-card p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2 text-white flex items-center gap-3">
-                            <span class="text-2xl">📚</span> Continuous Learning
-                        </h4>
-                        <p class="text-slate-300">Self-motivated and eager to acquire new skills</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-title">
-                Featured <span class="electric-blue">Projects</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="space-y-8">
-                <!-- Project 1 -->
-                <div class="bg-slate-900 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">⚡🔋</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                Smart Grid Demand Forecasting & Dynamic Load Balancing
-                            </h3>
-                            <p class="text-slate-400 mb-3">
-                                <span class="font-semibold">Duration:</span> July 2025 - December 2025 (Ongoing)
-                            </p>
-                            <p class="text-slate-300 leading-relaxed mb-4">
-                                Designing a data pipeline for energy demand forecasting using machine learning. Exploring LSTM approach for load prediction and defining workflow for dynamic load balancing logic. Combining EEE principles with AI to optimize smart grid operations.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag-pill">LSTM</span>
-                                <span class="tag-pill">Data Pipeline</span>
-                                <span class="tag-pill">Energy Systems</span>
-                                <span class="tag-pill">Machine Learning</span>
+            <div class="connect-grid">
+                <div class="reveal">
+                    <p style="font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">// Direct Contact</p>
+                    <div class="direct-contacts">
+                        <a href="tel:+916381897307" class="contact-item">
+                            <span class="c-icon">📱</span>
+                            <div>
+                                <div class="c-label">Phone</div>
+                                <div class="c-value">+91 6381897307</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="bg-slate-900 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">🏥📱</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                AI-Integrated RFID-Based Smart Health Monitoring System
-                            </h3>
-                            <p class="text-slate-400 mb-3">
-                                <span class="font-semibold">Status:</span> January 2025 - May 2025 (Completed)
-                            </p>
-                            <p class="text-slate-300 leading-relaxed mb-4">
-                                Built RFID-based patient registration system with backend workflow. Implemented real-time ESP32 → backend communication using HTTP/MQTT protocols. Designed database retrieval logic for patient history. Hackathon submission demonstrating hardware-software integration excellence.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag-pill">RFID</span>
-                                <span class="tag-pill">ESP32</span>
-                                <span class="tag-pill">MQTT</span>
-                                <span class="tag-pill">Backend</span>
-                                <span class="tag-pill">IoT</span>
+                        </a>
+                        <a href="mailto:praveenragavendra12@gmail.com" class="contact-item">
+                            <span class="c-icon">📧</span>
+                            <div>
+                                <div class="c-label">Email</div>
+                                <div class="c-value">praveenragavendra12@gmail.com</div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements & Hackathons Section -->
-    <section id="achievements" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-title">
-                Achievements & <span class="electric-blue">Hackathons</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="space-y-6">
-                <!-- Achievement 1 -->
-                <div class="achievement-card p-6 rounded-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-3xl">🥇</span>
-                        <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">
-                                Hack the Horizon 2024 - 7th Place
-                            </h4>
-                            <p class="text-slate-400 mb-2">
-                                <span class="font-semibold">IEEE & KPR College Coimbatore</span> • 24-Hour Hackathon
-                            </p>
-                            <p class="text-slate-300 mb-3">
-                                AI-Based Remote Health Monitoring System
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag-pill">AI Agents</span>
-                                <span class="tag-pill">Health Monitoring</span>
-                                <span class="tag-pill">RFID</span>
-                                <span class="tag-pill">ESP32</span>
+                <div class="reveal">
+                    <p style="font-family:'Space Mono',monospace;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-muted);margin-bottom:1rem;">// Social Profiles</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/praveenragav" target="_blank" rel="noopener noreferrer" class="social-card">
+                            <div class="social-left">
+                                <span class="social-icon">💼</span>
+                                <div>
+                                    <div class="social-name">LinkedIn</div>
+                                    <div class="social-handle">praveenragav</div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievement 2 -->
-                <div class="achievement-card p-6 rounded-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-3xl">🏆</span>
-                        <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">
-                                Smart India Hackathon 2025
-                            </h4>
-                            <p class="text-slate-400 mb-2">
-                                Intelligent Pesticide Sprinkling System
-                            </p>
-                            <p class="text-slate-300 mb-3">
-                                Developed intelligent automation system combining IoT sensors with AI decision-making for optimized agricultural operations.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag-pill">IoT</span>
-                                <span class="tag-pill">AI</span>
-                                <span class="tag-pill">Agriculture</span>
-                                <span class="tag-pill">Automation</span>
+                            <span class="social-arrow">→</span>
+                        </a>
+                        <a href="https://github.com/pravynragav" target="_blank" rel="noopener noreferrer" class="social-card">
+                            <div class="social-left">
+                                <span class="social-icon">💻</span>
+                                <div>
+                                    <div class="social-name">GitHub</div>
+                                    <div class="social-handle">@pravynragav</div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievement 3 -->
-                <div class="achievement-card p-6 rounded-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-3xl">⭐</span>
-                        <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">
-                                Smart India Hackathon 2024 - Top 30
-                            </h4>
-                            <p class="text-slate-400 mb-2">
-                                <span class="font-semibold">Shortlisted from 250 Teams</span>
-                            </p>
-                            <p class="text-slate-300 mb-3">
-                                Non-Electrical Solar Tracking System - Innovative renewable energy solution combining electrical engineering with smart tracking algorithms.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="tag-pill">Solar Energy</span>
-                                <span class="tag-pill">Tracking</span>
-                                <span class="tag-pill">Renewable</span>
+                            <span class="social-arrow">→</span>
+                        </a>
+                        <a href="https://instagram.com/pravynragav" target="_blank" rel="noopener noreferrer" class="social-card">
+                            <div class="social-left">
+                                <span class="social-icon">📸</span>
+                                <div>
+                                    <div class="social-name">Instagram</div>
+                                    <div class="social-handle">@pravynragav</div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Achievement 4 -->
-                <div class="achievement-card p-6 rounded-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-3xl">🎨</span>
-                        <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">
-                                First Prize - Poster Making Competition
-                            </h4>
-                            <p class="text-slate-400 mb-2">
-                                Fiesta Juniors'24 • Mepco Schlenk Engineering College
-                            </p>
-                            <p class="text-slate-300">
-                                Recognition for creative technical visualization and presentation skills
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Leadership -->
-                <div class="achievement-card p-6 rounded-lg">
-                    <div class="flex items-start gap-4">
-                        <span class="text-3xl">👔</span>
-                        <div class="flex-1">
-                            <h4 class="text-xl font-bold text-white mb-2">
-                                Leadership Roles
-                            </h4>
-                            <div class="space-y-2">
-                                <p class="text-slate-300">
-                                    <span class="font-semibold">Chief Editor & Designer</span> - Campus Trails Magazine<br/>
-                                    <span class="text-slate-400 text-sm">Designed templates, curated student photography, led editorial meetings</span>
-                                </p>
-                                <p class="text-slate-300">
-                                    <span class="font-semibold">Office-Bearer</span> - Photography Club<br/>
-                                    <span class="text-slate-400 text-sm">Organized intra-college events including Fiesta and Legacy</span>
-                                </p>
-                            </div>
-                        </div>
+                            <span class="social-arrow">→</span>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="section-title">
-                <span class="electric-blue">Certifications</span> & Courses
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">🤖</span> 5-Day AI Agents Intensive Course
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">Google</p>
-                    <p class="text-slate-300">Advanced training in building and deploying intelligent AI agents</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">🐍</span> Joy of Computing using Python
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">Professional Certification</p>
-                    <p class="text-slate-300">Comprehensive Python programming and computational thinking</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">🔌</span> SoC Design Implementation in FPGA Board
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">Advanced Hardware Design</p>
-                    <p class="text-slate-300">System-on-Chip design and FPGA implementation expertise</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">📋</span> Fundamentals of PCB Design
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">PCB Design & Technology</p>
-                    <p class="text-slate-300">Circuit board design, layout, and manufacturing principles</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">📊</span> MATLAB for Engineering Applications
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">Technical Computing</p>
-                    <p class="text-slate-300">Simulation, modeling, and data analysis using MATLAB</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                        <span class="text-2xl">🏭</span> Industrial Visits & Exposure
-                    </h4>
-                    <p class="text-electric-blue font-semibold mb-2">Real-World Experience</p>
-                    <p class="text-slate-300">KEL, Traco Cable, IREL - Understanding industry practices</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Industrial Visits Section -->
-    <section id="industrial-visits" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                Industrial <span class="electric-blue">Visits</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="space-y-6">
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
-                        <span class="text-2xl">🏢</span> Kerala Electrical & Allied Engineering Co. Ltd. (KEL)
-                    </h4>
-                    <p class="text-slate-300">Exposure to electrical equipment manufacturing and quality standards in industrial settings</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
-                        <span class="text-2xl">🔌</span> Traco Cable Company Ltd.
-                    </h4>
-                    <p class="text-slate-300">Understanding cable manufacturing processes, specifications, and industrial-scale operations in Kerala</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
-                        <span class="text-2xl">⚛️</span> Indian Rare Earths (IREL) Ltd.
-                    </h4>
-                    <p class="text-slate-300">Learning about rare earth mineral processing and applications in advanced technologies at Aluva, Kochi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Area of Interest Section -->
-    <section id="area-of-interest" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                Area of <span class="electric-blue">Interest</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">🖥️</span> Backend & Systems Engineering
-                    </h4>
-                    <p class="text-slate-300">Designing robust systems and infrastructure for scalable applications</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">📡</span> IoT Software Systems
-                    </h4>
-                    <p class="text-slate-300">Creating intelligent IoT solutions connecting hardware and cloud systems</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">🤖</span> Intelligent Automation
-                    </h4>
-                    <p class="text-slate-300">Building smart systems that optimize processes using AI and machine learning</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">📊</span> Applied ML for Infrastructure
-                    </h4>
-                    <p class="text-slate-300">Leveraging machine learning for smart grid and energy optimization</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">⚡</span> Smart Energy & Data Systems
-                    </h4>
-                    <p class="text-slate-300">Combining power systems with data-driven solutions for sustainability</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
-                        <span class="text-2xl">🌱</span> Sustainable Technology
-                    </h4>
-                    <p class="text-slate-300">Developing innovative solutions for renewable energy and environmental challenges</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section id="experience" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                Education & <span class="electric-blue">Experience</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="space-y-8">
-                <!-- Primary Education -->
-                <div class="bg-slate-800 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">🎓</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                Bachelor of Engineering in Electrical & Electronics Engineering
-                            </h3>
-                            <p class="text-xl electric-blue font-semibold mb-2">
-                                Mepco Schlenk Engineering College, Sivakasi
-                            </p>
-                            <p class="text-slate-400 mb-2">
-                                <span class="font-semibold">Batch:</span> 2023-2027 | <span class="font-semibold">Status:</span> Currently Pursuing
-                            </p>
-                            <p class="text-slate-400 mb-4">
-                                <span class="font-semibold">GPA:</span> 8.06/10
-                            </p>
-                            <p class="text-slate-300 leading-relaxed">
-                                Pursuing comprehensive education in Electrical and Electronics Engineering with specialization in modern technological innovations. Actively engaged in academic excellence while exploring interdisciplinary applications of AI, IoT, and embedded systems.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Secondary Education -->
-                <div class="bg-slate-800 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">📚</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                Higher Secondary
-                            </h3>
-                            <p class="text-xl electric-blue font-semibold mb-2">
-                                Vivekanda Vidhyalaya Matric School, Kodaikanal
-                            </p>
-                            <p class="text-slate-400 mb-4">
-                                <span class="font-semibold">Year:</span> 2022-2023
-                            </p>
-                            <p class="text-slate-300 leading-relaxed">
-                                Strong foundation in Physics, Chemistry, and Mathematics with a focus on science and technology fundamentals.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NSS Volunteer Experience -->
-                <div class="bg-slate-800 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">🤝</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                NSS Volunteer
-                            </h3>
-                            <p class="text-xl electric-blue font-semibold mb-2">
-                                Mepco Schlenk Engineering College
-                            </p>
-                            <p class="text-slate-400 mb-4">
-                                <span class="font-semibold">Status:</span> Active Member | Ongoing
-                            </p>
-                            <p class="text-slate-300 leading-relaxed">
-                                Contributing to community service and social welfare initiatives through the National Service Scheme. Committed to making a positive impact on society while developing leadership and organizational skills.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Skills Development -->
-                <div class="bg-slate-800 p-8 rounded-lg glow-border hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                    <div class="flex items-start gap-4">
-                        <div class="text-4xl">💡</div>
-                        <div class="flex-1">
-                            <h3 class="text-2xl font-bold text-white mb-2">
-                                Continuous Learning & Development
-                            </h3>
-                            <p class="text-xl electric-blue font-semibold mb-2">
-                                Self-Driven Exploration
-                            </p>
-                            <p class="text-slate-400 mb-4">
-                                <span class="font-semibold">Duration:</span> Ongoing | Passion-Based
-                            </p>
-                            <p class="text-slate-300 leading-relaxed">
-                                Beyond curriculum, actively learning AI agents, machine learning frameworks, and modern software development practices. Building projects that combine EEE principles with AI applications while expanding expertise in IoT and embedded systems.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Languages Section -->
-    <section id="languages" class="py-20 px-4 bg-slate-800">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                <span class="electric-blue">Languages</span> Known
-            </h2>
-            <div class="line-separator"></div>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
-                        <span class="text-2xl">🌍</span> English
-                    </h4>
-                    <p class="text-slate-300 font-semibold">Professional Level</p>
-                    <p class="text-slate-400 text-sm">Business communication, technical documentation, and presentation</p>
-                </div>
-
-                <div class="achievement-card p-6 rounded-lg">
-                    <h4 class="text-xl font-bold text-white mb-2 flex items-center gap-3">
-                        <span class="text-2xl">🇮🇳</span> Tamil
-                    </h4>
-                    <p class="text-slate-300 font-semibold">Native</p>
-                    <p class="text-slate-400 text-sm">Fluent in reading, writing, and speaking</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Connect Section -->
-    <section id="connect" class="py-20 px-4 bg-slate-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">
-                Let's <span class="electric-blue">Connect</span>
-            </h2>
-            <div class="line-separator"></div>
-            
-            <!-- Contact Information -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold text-white mb-6">Direct Contact</h3>
-                <div class="space-y-4">
-                    <div class="contact-info-item">
-                        <span class="icon-text">📱</span>
-                        <div>
-                            <p class="text-slate-300 font-semibold">Phone</p>
-                            <p class="text-electric-blue">+91 6381897307</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <span class="icon-text">📧</span>
-                        <div>
-                            <p class="text-slate-300 font-semibold">Email</p>
-                            <p class="text-electric-blue">praveenragavendra12@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="text-xl text-slate-300 mb-12 max-w-2xl">
-                I'm always excited to collaborate, discuss ideas, or explore opportunities that blend electrical engineering with AI innovation. Reach out to me through any of these platforms!
-            </p>
-
-            <div class="grid md:grid-cols-3 gap-8 mb-12">
-                <!-- LinkedIn -->
-                <a href="https://linkedin.com/in/praveenragav" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
-                        <div class="text-5xl mb-4">💼</div>
-                        <h3 class="text-xl font-bold text-white mb-2">LinkedIn</h3>
-                        <p class="text-slate-400 mb-4">praveenragav</p>
-                        <button class="btn-connect w-full">Connect</button>
-                    </div>
-                </a>
-
-                <!-- GitHub -->
-                <a href="https://github.com/pravynragav" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
-                        <div class="text-5xl mb-4">💻</div>
-                        <h3 class="text-xl font-bold text-white mb-2">GitHub</h3>
-                        <p class="text-slate-400 mb-4">@pravynragav</p>
-                        <button class="btn-connect w-full">View Profile</button>
-                    </div>
-                </a>
-
-                <!-- Instagram -->
-                <a href="https://instagram.com/pravynragav" target="_blank" rel="noopener noreferrer" class="group">
-                    <div class="bg-slate-800 p-8 rounded-lg glow-border hover:bg-slate-700 transition-all hover:shadow-lg hover:shadow-blue-500/40">
-                        <div class="text-5xl mb-4">📸</div>
-                        <h3 class="text-xl font-bold text-white mb-2">Instagram</h3>
-                        <p class="text-slate-400 mb-4">@pravynragav</p>
-                        <button class="btn-connect w-full">Follow</button>
-                    </div>
-                </a>
-            </div>
-
-            <div class="bg-slate-800 p-8 rounded-lg border-t-4 border-blue-400">
-                <h3 class="text-xl font-bold text-white mb-2">Want to chat?</h3>
-                <p class="text-slate-300 mb-4">
-                    Feel free to reach out via phone, email, or any platform above. I respond promptly to inquiries about projects, collaborations, or technical discussions!
-                </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="tel:+916381897307" class="btn-connect-outline">Call Me</a>
-                    <a href="mailto:praveenragavendra12@gmail.com" class="btn-connect-outline">Send Email</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-950 border-t border-slate-700 py-8 px-4">
-        <div class="max-w-6xl mx-auto text-center text-slate-500 text-sm">
-            <p>© 2026 Praveen Ragavendra B. All rights reserved.</p>
-            <p class="mt-2">Blending EEE Innovation with AI Intelligence ⚡🤖</p>
-            <p class="mt-4 text-xs">
-                Electrical & Electronics Engineer | IoT Specialist | AI Enthusiast<br/>
-                Mepco Schlenk Engineering College | Batch 2023-2027
-            </p>
-        </div>
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-logo">PRB_</div>
+        <p class="footer-tagline">Blending EEE Innovation with AI Intelligence ⚡🤖</p>
+        <p style="margin-top:0.75rem;">© 2026 Praveen Ragavendra B · Mepco Schlenk Engineering College · Batch 2023–2027</p>
     </footer>
 
     <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
+        });
+
+        function animateRing() {
+            rx += (mx - rx - 18) * 0.12;
+            ry += (my - ry - 18) * 0.12;
+            ring.style.transform = `translate(${rx}px, ${ry}px)`;
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform += ' scale(2)';
+                ring.style.width = '52px'; ring.style.height = '52px';
+            });
+            el.addEventListener('mouseleave', () => {
+                ring.style.width = '36px'; ring.style.height = '36px';
             });
         });
 
-        // Add scroll animation for elements
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((entry, i) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    setTimeout(() => entry.target.classList.add('visible'), i * 60);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-        document.querySelectorAll('.skill-card, .glow-border, .achievement-card, .contact-info-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
